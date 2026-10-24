@@ -1,0 +1,22 @@
+# GitHub presentation template and files derived from it (not redistributed here)
+template/
+
+# Local build tooling and output
+build/vendor*/
+build/node_modules/
+node_modules/
+__pycache__/
+*.pyc
+render/
+
+# Recorded fallback clips stay on the presenting laptop
+clips/*
+!clips/README.md
+
+# Office lock files and OS metadata
+~$*
+._*
+.DS_Store
+
+# Stray session files written by local tooling
+*.ses
