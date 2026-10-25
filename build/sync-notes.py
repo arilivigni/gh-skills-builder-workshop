@@ -37,14 +37,27 @@ class NotesError(Exception):
 
 def inline_runs(text, lineno):
     """Turn one line of prose into (text, bold, mono) runs."""
-    if re.search(r"\[[^\]]*\]\(", text):
-        raise NotesError(f"line {lineno}: Markdown links are not supported in speaker notes")
-    if "<" in re.sub(r"`[^`]*`", "", text):
-        raise NotesError(f"line {lineno}: put '<' inside backticks so Markdown does not treat it as HTML")
-    parts = text.split("**")
-    if len(parts) % 2 == 0:
+    runs, bold = [], False
+    for part in re.split(r"(`[^`]+`|\*\*)", text):
+        if not part:
+            continue
+        if part.startswith("`") and part.endswith("`") and len(part) > 2:
+            runs.append((part[1:-1], bold, False))
+        elif part == "**":
+            bold = not bold
+        else:
+            if "`" in part:
+                raise NotesError(f"line {lineno}: use balanced single backticks for inline code")
+            if re.search(r"\[[^\]]*\]\(", part):
+                raise NotesError(f"line {lineno}: Markdown links are not supported in speaker notes")
+            if "<" in part:
+                raise NotesError(f"line {lineno}: put '<' inside backticks so Markdown does not treat it as HTML")
+            if re.search(r"\*|~~|(?<!\w)_(?=\S).*?_(?!\w)", part):
+                raise NotesError(f"line {lineno}: use '**bold**' or inline code, not other emphasis")
+            runs.append((part, bold, False))
+    if bold:
         raise NotesError(f"line {lineno}: unbalanced '**'")
-    return [(part.replace("`", ""), i % 2 == 1, False) for i, part in enumerate(parts) if part]
+    return runs
 
 
 def parse_block(lines):
@@ -189,7 +202,9 @@ def sync(deck, notes, check):
             raise NotesError(f"{deck.name}: slide {number} has no notes placeholder; add one in PowerPoint")
         frame = slide.notes_slide.notes_text_frame
         want = normalize(notes[number])
-        if read_notes(frame) == want:
+        want_text = "\n".join("".join(text for text, _, _ in runs) for runs in want)
+        # .runs omits PowerPoint soft breaks and fields, but .text includes them.
+        if frame.text == want_text and read_notes(frame) == want:
             continue
         if not check:
             write_notes(frame, want)

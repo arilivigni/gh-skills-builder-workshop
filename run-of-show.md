@@ -241,7 +241,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 >
 > **SAY:** We're building the learning journey, not coding a Tailspin feature. No filtering, no npm install, no database, no browser tooling.
 >
-> **SAY:** Cleared for Takeoff is the title I rehearsed. In a minute the agent proposes three titles and repository names, and you get to vote. If we can't decide in 30 seconds, we keep this one.
+> **SAY:** Cleared for Takeoff is the title I rehearsed. In a minute the agent proposes a title and three repository names, and you get to vote on the exercise's identity. If we can't decide in 30 seconds, we keep this one.
 >
 > **DO:** Nothing to paste. Point at the three habits, then at the rehearsed title line.
 >
@@ -357,7 +357,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 >
 > **SAY:** And be honest about the limits. Actions can check what the learner wrote. It can't see which app mode or agent they used, and it can't prove how the model will behave later.
 >
-> **DO:** Read the three title and name candidates aloud and take a vote: 30 seconds at most. If the room can't decide, keep the rehearsed default. Send Gate 1 once. If the room chose a different title or name, edit both in the message first:
+> **DO:** Read the proposed title and three repository-name candidates aloud and take a vote: 30 seconds at most. If the room can't decide, keep the rehearsed default. Send Gate 1 once. If the room chose a different title or name, edit both in the message first:
 >
 > ```text
 > Approved. Use "Cleared for Takeoff: A Copilot Quick-Start" and repository name copilot-app-cleared-for-takeoff. Keep exactly the three approved learner steps. Return the complete outline artifact in one Markdown code block, including the title, Repository name, and Learner copy header. Do not create a repository or claim to have saved a file.

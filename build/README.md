@@ -21,7 +21,13 @@ The script rewrites only the notes parts of each deck and copies every other par
 python3 build/sync-notes.py --check
 ```
 
-Inside a notes block, use only `**bold**`, inline code (shown without backticks), `- ` bullets, and fenced code blocks (shown in Courier New, one notes paragraph per line). The script rejects links, headings, numbered lists, and a raw `<` outside code, so the Markdown and the deck notes stay identical.
+Inside a notes block, use only `**bold**`, single-backtick inline code (shown without backticks), `- ` bullets, and fenced code blocks (shown in Courier New, one notes paragraph per line). Markdown characters inside code stay literal. The script rejects unbalanced backticks, unsupported emphasis, links, headings, numbered lists, and a raw `<` outside code, so the Markdown and the deck notes stay identical.
+
+The check compares visible text as well as bold and code formatting, including line breaks or fields inserted in PowerPoint. Run the synchronization regression tests with:
+
+```bash
+python3 -m unittest discover -s build -p 'test_sync_notes.py'
+```
 
 ## Requirements
 
