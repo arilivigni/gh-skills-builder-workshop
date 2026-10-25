@@ -4,7 +4,7 @@
 
 The decks and their speaker notes use the three-step Tailspin quick-start (repository instructions, quality-checks reporting, and a report-only QA agent) and the 60-minute agenda in `../run-of-show.md`. Slide text changed on slides 2, 5, 9, 10, and 13 to match; layouts and artwork are unchanged. Filtering, Agent Merge, MCP, and canvases are extensions, not required live activities.
 
-The rebuilt 14-slide decks use the six Gemini-generated JPEGs, paired in light and dark themes. They are embedded losslessly as PNGs, preserving the original pixels and aspect ratio. Each composition includes its own title, so no second title is overlaid.
+The decks have 14 presented slides, plus the original title slide kept as a hidden backup (slide 15). They use the six Gemini-generated JPEGs, paired in light and dark themes. They are embedded losslessly as PNGs, preserving the original pixels and aspect ratio. Each composition includes its own title, so no second title is overlaid.
 
 | Gemini artwork | Deck placement | Teaching point |
 | --- | --- | --- |
@@ -35,4 +35,4 @@ The illustrated review is the orchestrator's self-review, not an independent rev
 
 The supplied `gh-qr-gh-skills-builder.png` is embedded unchanged on slides 4 and 14. Its accompanying link is https://gh.io/gh-skills-builder, which resolves to the Awesome Copilot plugin listing.
 
-The primary CLI command is `copilot plugin install gh-skills-builder@awesome-copilot`. Older/custom installations may need `copilot plugin marketplace add github/awesome-copilot` once first. Speaker notes include sources, installation alternatives, and the distinction between marketplace-pinned releases and unreleased local changes.
+The primary CLI command is `copilot plugin install gh-skills-builder@awesome-copilot`. Older/custom installations may need `copilot plugin marketplace add github/awesome-copilot` once first. The slide 4 section of `../run-of-show.md` includes sources, installation alternatives, and the distinction between marketplace-pinned releases and unreleased local changes.

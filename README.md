@@ -64,11 +64,10 @@ Review is report-only. It changes nothing until you approve a separate fix round
 
 | Path | Use it for |
 | --- | --- |
-| [`run-of-show.md`](run-of-show.md) | Agenda, script, hard stops, and fallbacks |
-| [`prompts.md`](prompts.md) | Copy-ready prompts, gates, and the hand-off command |
+| [`run-of-show.md`](run-of-show.md) | Everything you need on stage: agenda, slide cues, speaker notes, every prompt and command, hard stops, and fallbacks |
 | [`demo-prestage-checklist.md`](demo-prestage-checklist.md) | Rehearsal, fallback preparation, and day-of checks |
 | [`handoff.sh`](handoff.sh) | Creates the private authoring repo and imports the Tailspin starter |
-| `gh-skills-builder-workshop-light.pptx`<br>`gh-skills-builder-workshop-dark.pptx` | 14-slide decks with the same content; every slide's speaker notes start with its time window |
+| `gh-skills-builder-workshop-light.pptx`<br>`gh-skills-builder-workshop-dark.pptx` | Decks with the same content: 14 presented slides plus a hidden backup title slide (15). Speaker notes are synced from `run-of-show.md`. |
 | [`visuals/`](visuals/slide-placement.md) | Slide artwork, the plugin QR code, and placement notes |
 | [`fallback/`](fallback/README.md) | Saved rehearsal outputs for each hard stop |
 | [`clips/`](clips/README.md) | Local-only fallback recordings (git-ignored) |
@@ -94,7 +93,7 @@ Review is report-only. It changes nothing until you approve a separate fix round
 ## Deliver
 
 - Present the light or dark deck, whichever suits the room.
-- Follow the [run of show](run-of-show.md) and paste from the [prompt cards](prompts.md).
+- Follow the [run of show](run-of-show.md). It has every slide cue, speaker note, prompt, and command, so you don't need presenter view or any other file. View it on GitHub so each prompt has a copy button.
 - Use **Interactive** mode throughout:
   - **Auto → Intelligence** for the outline quick chat;
   - **Auto → Balance** for the project session, if those controls are available.
@@ -126,7 +125,9 @@ As a result, the exercise's Step 0 opens only its own instructions issue.
 
 ## Rebuilding the decks
 
-The committed decks are ready to present. To change slide text or speaker notes, edit `build/build-workshop-v2.py` and follow [`build/README.md`](build/README.md). The GitHub presentation template the decks are built on is not included.
+The committed decks are ready to present. Speaker notes come from [`run-of-show.md`](run-of-show.md): edit them there, then run `python3 build/sync-notes.py` to update both decks.
+
+Slide 1 (the 2026 template title slide) and the hidden slide 15 were edited by hand after the last build. Rerunning `build/build-workshop-v2.py` overwrites them, so follow [`build/README.md`](build/README.md) before you rebuild. The GitHub presentation template the decks are built on is not included.
 
 ## Credits
 

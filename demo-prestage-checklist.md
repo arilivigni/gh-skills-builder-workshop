@@ -1,6 +1,6 @@
 # Demo pre-stage checklist: Tailspin quick-start
 
-Prepare the **three-step** Copilot customization exercise, not the former five-step filtering lab. The presenter session is 60 minutes; the resulting learner exercise is about 15–20 minutes. See [run-of-show](run-of-show.md) for hard stops and [prompts](prompts.md) for exact wording.
+Prepare the **three-step** Copilot customization exercise, not the former five-step filtering lab. The presenter session is 60 minutes; the resulting learner exercise is about 15–20 minutes. The [run of show](run-of-show.md) has the hard stops, the speaker notes, and the exact wording of every prompt.
 
 ## Scope lock
 
@@ -65,13 +65,13 @@ Prepare the **three-step** Copilot customization exercise, not the former five-s
 - [ ] Confirm one agent and five skill commands: orchestrate, outline, bootstrap, review, publish. Rehearse actual app UI rather than assuming quick-chat tools or Auto tiers are available.
 - [ ] Rehearse the install demonstration in at most 60 seconds, or plan to skip it. Attendees can install later; their setup is not a dependency for the presenter demo.
 - [ ] Verify Interactive settings; prefer Auto → Intelligence for the quick chat and Auto → Balance for the project session, where available.
-- [ ] Open the light/dark decks and confirm the QR resolves. Check that the slide 2 agenda and each slide's notes match the run-of-show times.
+- [ ] Open the light/dark decks and confirm the QR resolves. Check that the slide 2 agenda matches the run-of-show times, and run `python3 build/sync-notes.py --check` to confirm both decks' speaker notes match the run of show.
 - [ ] Keep the presenting machine's fonts/display setup and local backup artifacts ready; do not depend on downloading assets on stage.
 
 ## Day of: T-30 minutes
 
 - [ ] Confirm auth, network, venue QR/link access, and backup connection. Do not expose tokens on screen.
-- [ ] Open the chosen deck, this run-of-show, and `prompts.md` on the presenter display.
+- [ ] Put the chosen deck on the shared screen, and open the [run of show](run-of-show.md) on GitHub on your own display so its prompts have copy buttons. You don't need presenter view.
 - [ ] Start a fresh quick chat. Keep the pre-added rehearsal project available and a terminal ready as the command fallback.
 - [ ] Open the separate learner copy and its saved baseline-fail/correct-change-pass evidence.
 - [ ] Open all fallback Markdown files and verify they describe the three-step quick-start. Match identity headers when using a different repo.
