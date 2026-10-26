@@ -1,6 +1,33 @@
 # Rebuilding the decks
 
-The committed decks in the repository root are ready to present. Rebuild them only after changing slide text, speaker notes, or artwork in `build-workshop-v2.py`.
+The committed decks in the repository root are ready to present. Speaker notes are maintained in [`../run-of-show.md`](../run-of-show.md), not in the build script; see [Speaker notes](#speaker-notes). Rebuild the decks only after changing slide text or artwork in `build-workshop-v2.py`.
+
+> [!WARNING]
+> The committed decks include hand edits made after the last build: slide 1 is the title slide from the 2026 GitHub presentation template, and the original title slide is now slide 15, hidden. `build-workshop-v2.py` does not reproduce those edits, so rerunning it overwrites them. After a rebuild, reapply them in PowerPoint, then run `sync-notes.py`.
+
+## Speaker notes
+
+Each slide's notes are a blockquote in `run-of-show.md` between `<!-- speaker-notes slide=N -->` and `<!-- /speaker-notes -->`. A slide can have more than one block (slide 9 has two); they are joined in order. Every slide, including hidden slide 15, needs at least one block.
+
+After editing the notes, copy them into both decks from the repository root:
+
+```bash
+python3 build/sync-notes.py
+```
+
+The script rewrites only the notes parts of each deck and copies every other part byte for byte, so hand edits to the slides are preserved. It needs only `python-pptx` from `build/requirements.txt`, not the template. To check that both decks match the run of show without changing them:
+
+```bash
+python3 build/sync-notes.py --check
+```
+
+Inside a notes block, use only `**bold**`, single-backtick inline code (shown without backticks), `- ` bullets, and fenced code blocks (shown in Courier New, one notes paragraph per line). Markdown characters inside code stay literal. The script rejects unbalanced backticks, unsupported emphasis, links, headings, numbered lists, and a raw `<` outside code, so the Markdown and the deck notes stay identical.
+
+The check compares visible text as well as bold and code formatting, including line breaks or fields inserted in PowerPoint. Run the synchronization regression tests with:
+
+```bash
+python3 -m unittest discover -s build -p 'test_sync_notes.py'
+```
 
 ## Requirements
 
@@ -17,7 +44,7 @@ From the repository root:
 GH_TEMPLATE_POTX="/path/to/2026 GitHub Presentation Template.potx" python3 build/build-workshop-v2.py
 ```
 
-The script writes `gh-skills-builder-workshop-light.pptx` and `gh-skills-builder-workshop-dark.pptx` to the repository root. It also writes `template/template-inspect.pptx`, a git-ignored presentation copy of the template used as the validation baseline.
+The script writes `gh-skills-builder-workshop-light.pptx` and `gh-skills-builder-workshop-dark.pptx` to the repository root. It also writes `template/template-inspect.pptx`, a git-ignored presentation copy of the template used as the validation baseline. The notes it writes are outdated; reapply the hand edits above, then run `python3 build/sync-notes.py`.
 
 `build-from-template.py` is the shared template helper that `build-workshop-v2.py` imports (template conversion, package pruning, and shape utilities). Running it directly only prints a pointer to `build-workshop-v2.py`.
 

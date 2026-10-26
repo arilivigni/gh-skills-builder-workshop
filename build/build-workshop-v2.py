@@ -209,7 +209,7 @@ def build(theme):
          "Repository instructions.\nConsistent quality reports.\nA report-only QA agent.", "2")
     base.add_badge(s, 6.37, 3.85, .48, ">", t, t["green_deep"])
     text(s, .85, 6.35, 11.6, .42,
-         "Working title: Cleared for Takeoff", 24, t["green"], True)
+         "Rehearsed title: Cleared for Takeoff. The room can vote for another.", 24, t["green"], True)
     note(s, "0:03-0:04. Source scenario: the Dev Days Copilot app lab "
          "(https://github-samples.github.io/copilot-workshops/real-world-development/app/). "
          "We build a small slice of it, not the whole lab. Starter: "
@@ -251,7 +251,7 @@ def build(theme):
         "0:05-0:06, with slide 7. Four phases, explicit human gates. Approve the outline before generation; approve "
         "the build before review; choose fixes or sign off; authorize actual publication separately. "
         "A diagrammed approval is behavioral guidance, not an enforced permission boundary. "
-        "Show Prompt 1 from prompts.md next, in a quick chat: we start with only an idea, no repo. "
+        "Show Prompt 1 from run-of-show.md next, in a quick chat: we start with only an idea, no repo. "
         "We're now at minute 6.")
 
     # 9: Outline shows the idea-to-contract transformation.
@@ -275,7 +275,7 @@ def build(theme):
          "Hard stop 0:12: use the saved fallback/exercise-outline.md and say it is from rehearsal. "
          "Hand-off, 0:12-0:16, stay on this slide. Say: Gate 1 approved the idea and created nothing; "
          "the Hand-off Authorization is a separate approval for one private authoring repo; publishing is a "
-         "later gate. In the same quick chat, send the Hand-off Authorization from prompts.md and approve the "
+         "later gate. In the same quick chat, send the Hand-off Authorization from run-of-show.md and approve the "
          "shell command out loud (the terminal is the fallback). handoff.sh <you> <approved-name> creates the "
          "private repo, imports Tailspin Toys as one MIT starter commit without the upstream issue sources, "
          "issue-seeding and triage workflows, or CODEOWNERS, and pushes. In the Copilot app, Add project on "
