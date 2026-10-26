@@ -113,6 +113,33 @@ class DocumentTests(unittest.TestCase):
             "Our 60-minute flight plan",
         )
 
+    def test_visible_slides_are_numbered_in_the_clear_footer(self):
+        self.assertNotIn("slide-number-1", {el["id"] for el in self.doc["slides"][0]["elements"]})
+        for number, slide in enumerate(self.doc["slides"][1:], start=2):
+            elements = {el["id"]: el for el in slide["elements"]}
+            page = elements.get(f"slide-number-{number}")
+            if slide.get("hidden"):
+                self.assertIsNone(page, slide["id"])
+                continue
+            self.assertIsNotNone(page, slide["id"])
+            self.assertEqual(page["html"], str(number))
+            self.assertEqual((page["x"], page["y"], page["w"], page["h"]), (1190, 688, 32, 20))
+            for element in slide["elements"]:
+                if element.get("type") != "text" or element is page:
+                    continue
+                self.assertFalse(
+                    page["x"] < element["x"] + element["w"]
+                    and element["x"] < page["x"] + page["w"]
+                    and page["y"] < element["y"] + element["h"]
+                    and element["y"] < page["y"] + page["h"],
+                    f"{page['id']} overlaps {element['id']} on {slide['id']}",
+                )
+
+    def test_scenario_uses_working_title_copy(self):
+        scenario = next(s for s in self.doc["slides"] if s["id"] == "scenario")
+        elements = {el["id"]: el for el in scenario["elements"]}
+        self.assertEqual(elements["scenario-title-vote"]["html"], "Working title: Cleared for Takeoff.")
+
     def test_element_ids_are_unique_per_slide_and_assets_resolve(self):
         assets = self.doc["assets"]
         slide_ids = {s["id"] for s in self.doc["slides"]}
