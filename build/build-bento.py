@@ -405,8 +405,11 @@ def build_slides():
         ]),
         slide("flight-plan", "Flight plan", [
             *chrome(),
-            text("agenda-title", 96, 72, 340, 160, "Our 60-minute<br>flight plan", 42, 700, line=1.15,
-                 role="title", fx=enter(0)),
+            text("agenda-title", 96, 72, 88, 52, "Our ", 42, 700, line=1.15, role="title", fx=enter(0)),
+            text("agenda-duration", 184, 72, 56, 52, "60", 42, 700, line=1.15,
+                 fx=enter(0) | {"countUp": True}),
+            text("agenda-unit", 240, 72, 194, 52, "-minute", 42, 700, line=1.15, fx=enter(0)),
+            text("agenda-title-rest", 96, 120, 340, 64, "flight plan", 42, 700, line=1.15, fx=enter(0)),
             text("agenda-note", 96, 512, 316, 96, esc("Mostly live.", "Checkpoints protect the demo."), 22,
                  color=MUTED, line=1.4, role="subtitle", fx=enter(7, "fade")),
             # A horizontal line rotated 90 degrees around its center (x 444, y 320).

@@ -101,6 +101,18 @@ class DocumentTests(unittest.TestCase):
         self.assertEqual(len(ids), len(set(ids)))
         self.assertTrue(all(s["notes"] for s in self.doc["slides"]))
 
+    def test_agenda_counts_only_the_duration_without_replacing_the_heading(self):
+        agenda = next(s for s in self.doc["slides"] if s["id"] == "flight-plan")
+        elements = {el["id"]: el for el in agenda["elements"]}
+        counter = elements["agenda-duration"]
+        self.assertEqual(counter["html"], "60")
+        self.assertTrue(counter["fx"]["countUp"])
+        self.assertEqual(
+            "".join(elements[key]["html"] for key in ("agenda-title", "agenda-duration", "agenda-unit"))
+            + " " + elements["agenda-title-rest"]["html"],
+            "Our 60-minute flight plan",
+        )
+
     def test_element_ids_are_unique_per_slide_and_assets_resolve(self):
         assets = self.doc["assets"]
         slide_ids = {s["id"] for s in self.doc["slides"]}
