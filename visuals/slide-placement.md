@@ -14,6 +14,10 @@ The decks have 14 presented slides, plus the original title slide kept as a hidd
 
 Source mapping is recorded in `build/build-workshop-v2.py`. `visual-contact-sheet.png` previews the earlier drawn PNGs, not the Gemini artwork. Those original PNGs remain available but are not used in the rebuilt decks.
 
+## Bento deck and website
+
+`build/build-bento.py` takes the dark deck's artwork (the three Gemini images, the title-slide rail, the headshot, the background texture, and the QR code) straight from `gh-skills-builder-workshop-dark.pptx`. It does not use the files in this folder. The Bento deck keeps the same slide numbers, and the website shows the three Gemini images in its lifecycle section. Both use WebP copies, at most 1920 pixels wide, to keep the page light. The QR code is copied byte for byte from the deck, so it scans exactly as it does on slides 4 and 14.
+
 ## Typography
 
 Native slide text uses the template's Mona Sans Display and Mona Sans fonts. Text inside the Gemini images is baked into the artwork; its exact font family cannot be verified or edited as PowerPoint text.

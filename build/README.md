@@ -1,6 +1,6 @@
-# Rebuilding the decks
+# Rebuilding the decks and the website
 
-The committed decks in the repository root are ready to present. Speaker notes are maintained in [`../run-of-show.md`](../run-of-show.md), not in the build script; see [Speaker notes](#speaker-notes). Rebuild the decks only after changing slide text or artwork in `build-workshop-v2.py`.
+The committed decks in the repository root are ready to present. Speaker notes are maintained in [`../run-of-show.md`](../run-of-show.md), not in the build script; see [Speaker notes](#speaker-notes). Rebuild the PowerPoint decks only after changing slide text or artwork in `build-workshop-v2.py`. The [Bento deck](#bento-deck) and the [website](#website) are generated from the dark PowerPoint deck and the run of show, and need neither the template nor PowerPoint.
 
 > [!WARNING]
 > The committed decks include hand edits made after the last build: slide 1 is the title slide from the 2026 GitHub presentation template, and the original title slide is now slide 15, hidden. `build-workshop-v2.py` does not reproduce those edits, so rerunning it overwrites them. After a rebuild, reapply them in PowerPoint, then run `sync-notes.py`.
@@ -28,6 +28,50 @@ The check compares visible text as well as bold and code formatting, including l
 ```bash
 python3 -m unittest discover -s build -p 'test_sync_notes.py'
 ```
+
+The Bento deck has the same notes, so run `python3 build/build-bento.py` after `sync-notes.py`.
+
+## Bento deck
+
+`build-bento.py` writes three things from `gh-skills-builder-workshop-dark.pptx` and `run-of-show.md`:
+
+- `gh-skills-builder-workshop-dark.bento.html`: the [Bento](https://bento.page) deck, with speaker notes.
+- `site/slides/gh-skills-builder-workshop.bento.html`: a read-only copy for the website, without notes.
+- `site/assets/img/`: the slide images, recompressed as WebP for the web, plus the favicon and the social preview image.
+
+A `.bento.html` file is the Bento app plus one `<script type="application/bento+json" id="bento-doc">` block that holds the slides as JSON. The script rewrites only that block, so the slide layouts live in `build-bento.py`: changes made in the Bento editor are overwritten by the next run. Images come from the PowerPoint deck, so artwork changes there carry over. The fonts are the Mona Sans files in `site/assets/fonts/`.
+
+```bash
+python3 build/build-bento.py                  # update the decks and site images
+python3 build/build-bento.py --check          # exit 1 if anything is out of date
+python3 build/build-bento.py --refresh-shell  # download the latest Bento app first
+python3 build/build-bento.py --shell FILE     # or use a Bento app saved locally
+```
+
+It needs Python 3.11 or later with `python-pptx` and `Pillow` from `requirements.txt`. Without `--refresh-shell` or `--shell`, it reuses the Bento app already in the committed deck, so it works offline. An unchanged deck is left alone, so its `modified` time only moves when the slides change. Images are compared byte for byte, so replaced artwork is always picked up. Pillow is pinned because another version can encode the images differently, which `--check` reports as out of date.
+
+## Website
+
+`site/` is static HTML, CSS, and JavaScript with no build step. Each prompt and command on the page sits in a region marked `<!-- prompt:ID -->…<!-- /prompt -->`, filled from the matching fenced code block in `run-of-show.md`. `sync-site.py` fills those regions, highlights the known `<placeholders>`, and copies `handoff.sh` to `site/downloads/`:
+
+```bash
+python3 build/sync-site.py          # update the site
+python3 build/sync-site.py --check  # exit 1 if the site is out of date
+```
+
+It uses only the standard library. To show another prompt, add an empty region with a new ID to `site/index.html`, then add the ID to `PROMPTS` in `sync-site.py` with its slide, code-block position, and a phrase it must contain. The script fails if a region has no prompt, a prompt has no region, or a run-of-show block moved, so a reordered prompt is never copied into the wrong place.
+
+[`../.github/workflows/pages.yml`](../.github/workflows/pages.yml) runs `test_sync_site.py` and `sync-site.py --check` on pull requests that touch the site, `run-of-show.md`, or `handoff.sh`, and deploys `site/` to GitHub Pages on each push to `main`. It does not rebuild the Bento deck, so run `build-bento.py --check` yourself after changing the PowerPoint deck.
+
+## Tests
+
+Run every build test from the repository root:
+
+```bash
+python3 -m unittest discover -s build -p 'test_*.py'
+```
+
+`test_sync_site.py` needs only the standard library. `test_sync_notes.py` and `test_build_bento.py` need `requirements.txt`.
 
 ## Requirements
 

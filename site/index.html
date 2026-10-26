@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Turn any idea into a Hands-on GitHub Exercise · gh-skills-builder workshop</title>
+  <meta name="description" content="A 60-minute live workshop: turn an idea into a small GitHub Skills exercise with GitHub Copilot and the gh-skills-builder plugin. Slides, agenda, and every prompt to replay.">
+  <meta name="theme-color" content="#101411">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Turn any idea into a Hands-on GitHub Exercise">
+  <meta property="og:description" content="A 60-minute live workshop with GitHub Copilot and the gh-skills-builder plugin. Slides, agenda, and every prompt to replay.">
+  <meta property="og:image" content="https://arilivigni.github.io/gh-skills-builder-workshop/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Four glowing phases, Outline, Bootstrap, Review, and Publish, joined by approval gates.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/MonaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/MonaSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="gh-skills-builder workshop, back to top">
+        <img src="assets/img/github-mark.svg" alt="" width="28" height="27">
+        <span>gh-skills-builder <span class="brand-sub">workshop</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Sections">
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+          <li><a href="#scenario">Scenario</a></li>
+          <li><a href="#lifecycle">Lifecycle</a></li>
+          <li><a href="#prompts">Prompts</a></li>
+          <li><a href="#slides">Slides</a></li>
+          <li><a href="#resources">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Live workshop · 60 minutes</p>
+          <h1 id="hero-title">Turn any idea into a Hands-on GitHub Exercise</h1>
+          <p class="lede">GitHub Copilot app/CLI and the <strong>gh-skills-builder</strong> plugin.</p>
+          <p>Watch one idea become <em>Cleared for Takeoff: A Copilot Quick-Start</em>, a 15–20-minute GitHub Skills exercise built on Tailspin Toys. Every prompt from the session is on this page, so you can replay it yourself.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://gh.io/gh-skills-builder">Get the plugin</a>
+            <a class="btn btn-ghost" href="#slides">View the slides</a>
+          </div>
+        </div>
+        <aside class="presenter" aria-label="Presenter">
+          <img src="assets/img/headshot.webp" alt="Ari LiVigni" width="387" height="267">
+          <div>
+            <p class="presenter-name">Ari LiVigni</p>
+            <p class="presenter-role">Sr. Learning Advocate and Agentic AI Engineer</p>
+            <p class="presenter-role">GitHub</p>
+          </div>
+        </aside>
+      </div>
+      <div class="wrap">
+        <dl class="facts">
+          <div><dt>Format</dt><dd>Presenter-led live walkthrough. Attendees watch, then replay the prompts later.</dd></div>
+          <div><dt>Live result</dt><dd>A three-step learner exercise with workflow-backed checks and feedback.</dd></div>
+          <div><dt>Timing</dt><dd>45 minutes of content, a 5-minute buffer, and 10 minutes of protected Q&amp;A.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="plugin" aria-labelledby="plugin-title">
+      <div class="wrap">
+        <h2 id="plugin-title">What is a plugin?</h2>
+        <p class="section-lede">An installable toolkit that adds reusable capabilities to GitHub Copilot.</p>
+        <div class="grid grid-plugin">
+          <article class="card card-feature">
+            <p class="card-head"><span class="badge" aria-hidden="true">+</span> gh-skills-builder</p>
+            <p class="pitch">Install once.<br>Reuse the workflow.</p>
+          </article>
+          <article class="card">
+            <span class="badge" aria-hidden="true">A</span>
+            <h3>One agent</h3>
+            <p><code>@github-skills-orchestrator</code> coordinates the work and asks for your approval.</p>
+          </article>
+          <article class="card">
+            <span class="badge" aria-hidden="true">S</span>
+            <h3>Five skills</h3>
+            <p>Reusable workflows and capabilities the agent loads, one for each phase plus one to run the whole loop.</p>
+          </article>
+        </div>
+        <p class="note">A plugin packages customizations. It is not a separate AI model.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="install" aria-labelledby="install-title">
+      <div class="wrap">
+        <h2 id="install-title">Add the toolkit. Start building.</h2>
+        <p class="section-lede">gh-skills-builder is available in the Awesome Copilot marketplace.</p>
+        <div class="install-grid">
+          <ol class="steps">
+            <li>
+              <h3>Find it</h3>
+              <p>Open Plugins in the Copilot app. Find gh-skills-builder.</p>
+            </li>
+            <li>
+              <h3>Review + install</h3>
+              <p>Review the source and capabilities. Install and enable it for your session.</p>
+            </li>
+            <li>
+              <h3>Use it</h3>
+              <p>Choose the orchestrator agent. Ask it to run the exercise lifecycle.</p>
+            </li>
+          </ol>
+          <figure class="qr">
+            <img src="assets/img/qr.png" alt="QR code for gh.io/gh-skills-builder" width="224" height="224">
+            <figcaption><a href="https://gh.io/gh-skills-builder">gh.io/gh-skills-builder</a></figcaption>
+          </figure>
+        </div>
+        <h3 class="subhead">Prefer the CLI?</h3>
+        <div class="code-block">
+          <p class="code-label">Install</p>
+          <pre><code><!-- prompt:install -->copilot plugin install gh-skills-builder@awesome-copilot<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">If the CLI says the marketplace is unknown, register it once, then rerun the install</p>
+          <pre><code><!-- prompt:marketplace-add -->copilot plugin marketplace add github/awesome-copilot<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Confirm the install</p>
+          <pre><code><!-- prompt:plugin-list -->copilot plugin list<!-- /prompt --></code></pre>
+        </div>
+        <p class="note"><code>@github-skills-orchestrator</code> is the <strong>agent</strong>; the slash commands are <strong>skills</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section" id="agenda" aria-labelledby="agenda-title">
+      <div class="wrap">
+        <h2 id="agenda-title">Our 60-minute flight plan</h2>
+        <p class="section-lede">Mostly live. Checkpoints protect the demo: every live segment has a hard stop and a rehearsed fallback.</p>
+        <ol class="timeline">
+          <li><span class="time">00–06</span><div><h3>Get oriented</h3><p>Plugins, installation, and the quick-start scenario.</p></div></li>
+          <li><span class="time">06–16</span><div><h3>Outline + hand-off</h3><p>Three learner steps, a name, and a private repo. <code>/create-github-skills-outline</code>, then <code>handoff.sh</code>.</p></div></li>
+          <li><span class="time">16–27</span><div><h3>Bootstrap</h3><p>From outline to files, plus one fail-to-pass check. <code>/bootstrap-github-skills-exercise</code></p></div></li>
+          <li><span class="time">27–35</span><div><h3>Review</h3><p>Report findings, approve one fix, review again. <code>/review-github-skills-exercise</code></p></div></li>
+          <li><span class="time">35–41</span><div><h3>Publish readiness</h3><p>Evidence and a launch plan, without publishing. <code>/publish-github-skills-exercise</code></p></div></li>
+          <li><span class="time">41–60</span><div><h3>Recap + Q&amp;A</h3><p>Takeaways by 0:45, with <code>/orchestrate-github-skills-exercise</code> shown but not run. A buffer runs 0:45–0:50, and Q&amp;A from 0:50 is protected.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="scenario" aria-labelledby="scenario-title">
+      <div class="wrap">
+        <h2 id="scenario-title">Today's scenario: Tailspin Toys</h2>
+        <p class="section-lede">Build a 15–20-minute Copilot quick-start inside Tailspin Toys.</p>
+        <div class="grid grid-2">
+          <article class="card">
+            <span class="badge" aria-hidden="true">1</span>
+            <h3>Start with a real app</h3>
+            <p>Tailspin Toys as MIT starter code. Learners customize Copilot, not app features.</p>
+          </article>
+          <article class="card">
+            <span class="badge" aria-hidden="true">2</span>
+            <h3>Teach three habits</h3>
+            <p>Repository instructions. Consistent quality reports. A report-only QA agent.</p>
+          </article>
+        </div>
+        <p class="callout">Rehearsed title: <strong>Cleared for Takeoff: A Copilot Quick-Start</strong>. The room can vote for another.</p>
+        <div class="table-wrap" role="region" aria-labelledby="steps-caption" tabindex="0">
+          <table class="stack">
+            <caption id="steps-caption">The three graded learner steps</caption>
+            <thead><tr><th scope="col">Learner step</th><th scope="col">Artifact</th><th scope="col">What validation can observe</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1. Add a TypeScript documentation convention</th><td data-label="Artifact"><code>.github/<wbr>copilot-instructions.md</code></td><td data-label="What validation can observe">A new, clearly delimited workshop section requires TSDoc for new or changed exported TypeScript functions, preserving existing instructions.</td></tr>
+              <tr><th scope="row">2. Make quality reporting consistent</th><td data-label="Artifact"><code>.github/<wbr>skills/<wbr>quality-checks/<wbr>SKILL.md</code></td><td data-label="What validation can observe">The existing skill keeps its frontmatter and gains a reporting contract: command, passed/failed/blocked status, evidence, and the reason for any failed or blocked check. No invented results.</td></tr>
+              <tr><th scope="row">3. Define a report-only QA agent</th><td data-label="Artifact"><code>.github/<wbr>agents/<wbr>qa.agent.md</code></td><td data-label="What validation can observe">Valid name and description frontmatter, plus instructions to report requirements with evidence, ask before implementation changes, and never commit or open PRs.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Validation checks what each learner wrote, not just whether a file exists, and not whether they invoked Copilot.</p>
+      </div>
+    </section>
+
+    <section class="section" id="architect" aria-labelledby="architect-title">
+      <div class="wrap">
+        <h2 id="architect-title">From builder to architect</h2>
+        <p class="section-lede">The agent does the heavy lifting. You own the learning experience.</p>
+        <div class="grid grid-2">
+          <article class="card">
+            <span class="badge" aria-hidden="true">A</span>
+            <h3>Let the agent build</h3>
+            <ul class="plain"><li>Draft step content.</li><li>Scaffold repository files.</li><li>Wire validation and feedback.</li></ul>
+          </article>
+          <article class="card">
+            <span class="badge" aria-hidden="true">H</span>
+            <h3>Keep the human decisions</h3>
+            <ul class="plain"><li>Set learner outcomes.</li><li>Approve the outline and fixes.</li><li>Authorize publication.</li></ul>
+          </article>
+        </div>
+        <p class="note">Same pattern for educators, maintainers, event organizers, DevRel, startups, and enterprises.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="lifecycle" aria-labelledby="lifecycle-title">
+      <div class="wrap">
+        <h2 id="lifecycle-title">One agent. Five skills. Four phases.</h2>
+        <p class="section-lede">One coordinator loads the capability needed for each stage. The skills do the work; people decide when to advance.</p>
+        <figure class="art">
+          <img src="assets/img/art-agent-skills.webp" alt="The @github-skills-orchestrator agent loads the orchestration skill and four phase skills: 01 Outline, define the journey; 02 Bootstrap, build the exercise; 03 Review, report the findings; 04 Publish, prepare the release." width="1920" height="1080" loading="lazy" decoding="async">
+          <figcaption>Agent skills are automated workflows for an agent, not five separate agents.</figcaption>
+        </figure>
+        <ol class="grid grid-4 phases">
+          <li class="card">
+            <span class="phase-num">01</span>
+            <h3>Outline</h3>
+            <p>Decide what success looks like: outcome, identity, and what a workflow can actually check.</p>
+            <code>/create-github-skills-outline</code>
+          </li>
+          <li class="card">
+            <span class="phase-num">02</span>
+            <h3>Bootstrap</h3>
+            <p>Make the outline runnable: README, step files, and workflows in the current repository.</p>
+            <code>/bootstrap-github-skills-exercise</code>
+          </li>
+          <li class="card">
+            <span class="phase-num">03</span>
+            <h3>Review</h3>
+            <p>Report findings without editing. Approve one fix, then review again.</p>
+            <code>/review-github-skills-exercise</code>
+          </li>
+          <li class="card">
+            <span class="phase-num">04</span>
+            <h3>Publish</h3>
+            <p>Prepare first. Authorize separately. Release-ready content is not permission to publish it.</p>
+            <code>/publish-github-skills-exercise</code>
+          </li>
+        </ol>
+        <p class="note">The fifth skill, <code>/orchestrate-github-skills-exercise</code>, runs the whole loop with the same approval gates.</p>
+        <div class="grid grid-2 art-pair">
+          <figure class="art">
+            <img src="assets/img/art-lifecycle.webp" alt="From idea to exercise: Outline, Bootstrap, Review, and Publish in sequence, each followed by a human approval: outline approved, build satisfactory, review signed off, publish authorized." width="1920" height="1080" loading="lazy" decoding="async">
+            <figcaption>Four phases, explicit approval at every gate, no auto-publish.</figcaption>
+          </figure>
+          <figure class="art">
+            <img src="assets/img/art-review-circuit.webp" alt="Feedback is a circuit: a build round feeds a report-only review round, a human decides, and approved fixes loop back to the build until sign-off and publish authorization." width="1920" height="1080" loading="lazy" decoding="async">
+            <figcaption>Report first. Apply approved fixes. Re-review before release. Same finding after two fix rounds? Stop and escalate.</figcaption>
+          </figure>
+        </div>
+        <div class="table-wrap" role="region" aria-labelledby="approvals-caption" tabindex="0">
+          <table class="stack">
+            <caption id="approvals-caption">Approvals at a glance: each one grants one thing</caption>
+            <thead><tr><th scope="col">Approval</th><th scope="col">When</th><th scope="col">What it approves</th><th scope="col">Side effect</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Gate 1</th><td data-label="When">0:06–0:12</td><td data-label="What it approves">The outline and the exercise identity</td><td data-label="Side effect">None</td></tr>
+              <tr><th scope="row">Hand-off Authorization</th><td data-label="When">0:12–0:16</td><td data-label="What it approves">Running <code>handoff.sh</code> once</td><td data-label="Side effect">Private authoring repo, starter commit, and push</td></tr>
+              <tr><th scope="row">Gate 2</th><td data-label="When">By 0:27</td><td data-label="What it approves">Accepting the build before review</td><td data-label="Side effect">None</td></tr>
+              <tr><th scope="row">Fix round (Prompt 3b)</th><td data-label="When">0:30–0:35</td><td data-label="What it approves">One targeted fix for one real finding</td><td data-label="Side effect">Edits in the authoring repo</td></tr>
+              <tr><th scope="row">Gate 3</th><td data-label="When">By 0:35</td><td data-label="What it approves">No known release blockers; prepare readiness only</td><td data-label="Side effect">None</td></tr>
+              <tr><th scope="row">Publication (Prompt 4b)</th><td data-label="When">0:35–0:41</td><td data-label="What it approves">A public template at a named owner/repository</td><td data-label="Side effect"><strong>Never given on stage</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prompts" aria-labelledby="prompts-title">
+      <div class="wrap">
+        <h2 id="prompts-title">Replay the prompts</h2>
+        <p class="section-lede">These are the exact prompts from the session. Copy one, replace each <mark class="ph">&lt;placeholder&gt;</mark>, then send it.</p>
+
+        <div class="grid grid-2 guidance">
+          <div class="table-wrap" role="region" aria-labelledby="placeholders-caption" tabindex="0">
+            <table>
+              <caption id="placeholders-caption">Placeholders</caption>
+              <thead><tr><th scope="col">Placeholder</th><th scope="col">Replace with</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>&lt;workshop-repo&gt;</code></th><td>The <strong>absolute</strong> path of the folder that holds <a href="#handoff"><code>handoff.sh</code></a>. A quick chat has no working directory, so a relative path will not work.</td></tr>
+                <tr><th scope="row"><code>&lt;you&gt;</code></th><td>The account or organization that will own the private authoring repository.</td></tr>
+                <tr><th scope="row"><code>&lt;paste the approved outline artifact&gt;</code></th><td>The whole outline block returned after Gate 1.</td></tr>
+                <tr><th scope="row"><code>&lt;finding-id&gt;</code></th><td>The real review finding you choose to fix.</td></tr>
+                <tr><th scope="row"><code>&lt;demo-owner&gt;/<wbr>&lt;approved-name&gt;</code></th><td>The publication target to show, but not authorize, in Prompt 4b.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sessions">
+            <h3>Sessions and modes</h3>
+            <p>Use <strong>one quick chat</strong> for Prompt 1, Gate 1, and the Hand-off Authorization. Then use <strong>one project session</strong>, opened on the new repository, for Prompts 2–4.</p>
+            <ul>
+              <li>Mode: <strong>Interactive</strong> throughout, so you stay in the approval loop.</li>
+              <li>Model: <strong>Auto → Intelligence</strong> for the outline quick chat; <strong>Auto → Balance</strong> for the project session, if those controls are available.</li>
+            </ul>
+            <p class="note">Interactive is not a security boundary. Tool permissions and explicit authorization still matter.</p>
+          </div>
+        </div>
+
+        <h3 class="phase-title"><span class="phase-num">01</span> Outline and hand-off <span class="where">Quick chat</span></h3>
+        <div class="code-block">
+          <p class="code-label">Prompt 1 · Create the outline</p>
+          <pre><code><!-- prompt:prompt-1 -->@github-skills-orchestrator Use /create-github-skills-outline to design a 15–20-minute GitHub Skills exercise for a new Tailspin Toys teammate.
+
+Keep exactly three graded learner steps:
+1. Add a clearly delimited workshop section to .github/copilot-instructions.md requiring TSDoc for new or changed exported TypeScript functions. Preserve existing instructions.
+2. Customize .github/skills/quality-checks/SKILL.md so reports include command, passed/failed/blocked status, evidence, and reasons for failed or blocked checks. Preserve frontmatter. Never invent command results.
+3. Create .github/agents/qa.agent.md with name and description frontmatter. It reports requirements with evidence, asks before implementation changes, and never commits or opens PRs.
+
+For each step include a short Theory block, one Activity, success criteria, a repository-observable validation signal, and useful failure feedback. Validate the content of learner artifacts, not just file existence. Do not claim Actions can prove which local app mode or agent was used.
+
+This is a small slice of the Dev Days Copilot app scenario, not a conversion of the full lab. Do not add filtering, application changes, dependency installation, database setup, browser tests, feature PR/merge requirements, or extra graded steps. Mention Agent Merge, MCP, and canvases only as optional next steps.
+
+Propose a title and three lowercase-hyphenated repository names containing copilot-app, without a skills- prefix. Recommend one.
+
+We are in a quick chat with no repository. After I approve the identity and outline, return the complete standalone exercise-outline.md content in one Markdown code block. Start with # &lt;approved title&gt;, then Repository name: &lt;approved name&gt;, then Learner copy: skills-&lt;approved name&gt;. Do not claim a file has been saved.<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Gate 1 · Approve the outline and identity</p>
+          <pre><code><!-- prompt:gate-1 -->Approved. Use "Cleared for Takeoff: A Copilot Quick-Start" and repository name copilot-app-cleared-for-takeoff. Keep exactly the three approved learner steps. Return the complete outline artifact in one Markdown code block, including the title, Repository name, and Learner copy header. Do not create a repository or claim to have saved a file.<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Hand-off Authorization · Create the private authoring repo</p>
+          <pre><code><!-- prompt:handoff -->Hand-off Authorization: I authorize running this existing workshop script once to create my private authoring repository, import the Tailspin starter code, commit, and push. This is not permission to publish a public template or run the exercise lifecycle.
+
+<mark class="ph">&lt;workshop-repo&gt;</mark>/handoff.sh <mark class="ph">&lt;you&gt;</mark> copilot-app-cleared-for-takeoff
+
+Show the output and local folder path. Do not create other repositories or files beyond the script's work.<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Or run the hand-off yourself in a terminal</p>
+          <pre><code><!-- prompt:handoff-terminal --><mark class="ph">&lt;workshop-repo&gt;</mark>/handoff.sh <mark class="ph">&lt;you&gt;</mark> copilot-app-cleared-for-takeoff<!-- /prompt --></code></pre>
+        </div>
+
+        <h3 class="phase-title"><span class="phase-num">02</span> Bootstrap <span class="where">Project session</span></h3>
+        <div class="code-block">
+          <p class="code-label">Prompt 2 · Build the exercise</p>
+          <pre><code><!-- prompt:prompt-2 -->@github-skills-orchestrator Phase I is approved. Use /bootstrap-github-skills-exercise with this outline artifact:
+
+<mark class="ph">&lt;paste the approved outline artifact&gt;</mark>
+
+First save that artifact verbatim to .github/exercise-outline.md. Use its identity header for the README and Copy Exercise badge. Stop and ask if its repository name differs from this repo.
+
+Build exactly three graded steps plus the standard completion/review material. Preserve Tailspin's MIT LICENSE and credit github-samples/tailspin-toys in the README.
+
+Do not complete the learner tasks: leave the new TSDoc workshop section, the quality-reporting contract, and qa.agent.md for the learner to add. Inspect the existing starter files first so validation requires a meaningful learner change instead of passing the baseline.
+
+Step 0 opens the normal exercise instructions issue only; do not seed any other issues. Keep existing Tailspin workflows intact, but do not depend on their checks for exercise progression.
+
+Use lightweight artifact checks for all three steps. Do not run or require npm ci, app builds, database setup, Playwright, or application tests. Check frontmatter and required reporting/behavioral instructions with helpful failure feedback, not file-exists or arbitrary whole-file text matching alone.
+
+Follow the GitHub Skills workflow contract, use scoped permissions, and inspect workflow event/path interactions. Report what was actually validated and what remains untested. Do not publish or create another repository.<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Gate 2 · Accept the build</p>
+          <pre><code><!-- prompt:gate-2 -->I accept this build round. Do not make more changes. I will send the report-only review request next.<!-- /prompt --></code></pre>
+        </div>
+
+        <h3 class="phase-title"><span class="phase-num">03</span> Review <span class="where">Same project session</span></h3>
+        <div class="code-block">
+          <p class="code-label">Prompt 3 · Report-only review</p>
+          <pre><code><!-- prompt:prompt-3 -->@github-skills-orchestrator Use /review-github-skills-exercise. Report findings without editing files.
+
+Check the approved three-step scope, learner clarity and accessibility, workflow safety, and validation reliability. In particular:
+- The untouched starter must not already pass the three learner checks.
+- Each correct learner artifact should pass; an incomplete or incorrect artifact should fail with useful feedback. Inspect and, where feasible, exercise those cases.
+- Step 0 must open only the exercise instructions issue and create no other issues.
+- No grade should depend on npm, an app build, browser tooling, or proof that the learner used a local Copilot mode.
+- Repository-observable checks of written policies must not be described as proof of model behavior.
+
+Prioritize actual release blockers and include evidence and untested risks. If no findings are supported, say so; do not invent a finding for the demo.<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Prompt 3b (optional) · Approve one fix</p>
+          <pre><code><!-- prompt:prompt-3b -->I approve a bootstrap fix round for <mark class="ph">&lt;finding-id&gt;</mark> only. Make the targeted fix and run its relevant checks. Stop for my build approval before running the review again.<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Accept the fix and review again</p>
+          <pre><code><!-- prompt:fix-accept -->I accept the fix round. Re-run the report-only review with the same criteria.<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Gate 3 · Sign off the review</p>
+          <pre><code><!-- prompt:gate-3 -->No known release blockers remain in the reviewed build. Prepare release-readiness materials only; do not publish.<!-- /prompt --></code></pre>
+        </div>
+
+        <h3 class="phase-title"><span class="phase-num">04</span> Publish readiness <span class="where">Same project session</span></h3>
+        <div class="code-block">
+          <p class="code-label">Prompt 4 · Prepare release readiness</p>
+          <pre><code><!-- prompt:prompt-4 -->@github-skills-orchestrator Use /publish-github-skills-exercise for the approved three-step exercise. Read its identity from .github/exercise-outline.md.
+
+Prepare a short readiness report: validation evidence, untested risks, a PR description, brief release notes, and a launch checklist. Clearly separate completed checks from required fresh-copy testing.
+
+Do not create or transfer repositories, change visibility, push, or publish. Stop at the authorization boundary.<!-- /prompt --></code></pre>
+        </div>
+        <div class="code-block">
+          <p class="code-label">Prompt 4b · Show the publish plan, without authorizing it</p>
+          <pre><code><!-- prompt:prompt-4b -->Use /publish-github-skills-exercise to show, without executing, a plan for publishing this exercise to <mark class="ph">&lt;demo-owner&gt;</mark>/<mark class="ph">&lt;approved-name&gt;</mark> as a public template.
+
+Show the exact target, visibility, changes, commands, and readiness blockers. Wait for separate explicit authorization. This message is not authorization to create, push, transfer, change settings, or publish.<!-- /prompt --></code></pre>
+        </div>
+
+        <h3 class="phase-title"><span class="phase-num">05</span> The whole loop <span class="where">Shown, not run on stage</span></h3>
+        <div class="code-block">
+          <p class="code-label">Orchestrate every phase with the same gates</p>
+          <pre><code><!-- prompt:orchestrate -->@github-skills-orchestrator Use /orchestrate-github-skills-exercise to coordinate the same three-step Tailspin quick-start. Read the approved outline from .github/exercise-outline.md. Stop after each build for approval; review without edits; request separate approval for fixes and any publication. Do not expand the scope or publish without explicit authorization.<!-- /prompt --></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="handoff" aria-labelledby="handoff-title">
+      <div class="wrap handoff-grid">
+        <div>
+          <h2 id="handoff-title">The hand-off script</h2>
+          <p class="section-lede">Moves the approved outline from a quick chat into a real repository.</p>
+          <ol class="numbered">
+            <li>Creates <code>&lt;owner&gt;/&lt;name&gt;</code> as a <strong>private</strong> repository with <code>gh</code> and clones it under <code>parent-dir</code> (default <code>~/src/workshop-demo</code>).</li>
+            <li>Imports a shallow copy of Tailspin Toys as one MIT-licensed starter commit, leaving out its upstream issue seeding, maintainer triage workflow, and CODEOWNERS.</li>
+            <li>Pushes <code>main</code>.</li>
+          </ol>
+          <p><code>--dry-run</code> builds the same commit locally without creating or pushing anything on GitHub. It still clones Tailspin, so it needs a network connection. The script requires an authenticated <code>gh</code>, <code>git</code>, and <code>rsync</code>.</p>
+        </div>
+        <div class="download-card card">
+          <h3>Download</h3>
+          <a class="btn btn-primary" href="downloads/handoff.sh" download>handoff.sh</a>
+          <div class="code-block">
+            <p class="code-label">Make it executable, then try a dry run</p>
+            <pre><code>chmod +x handoff.sh
+./handoff.sh --dry-run <mark class="ph">&lt;you&gt;</mark> copilot-app-cleared-for-takeoff</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="slides" aria-labelledby="slides-title">
+      <div class="wrap">
+        <h2 id="slides-title">The slides</h2>
+        <p class="section-lede">The full 14-slide deck. Click the slides, then use the arrow keys, or use the buttons below. On a phone, swipe.</p>
+        <div class="deck-frame">
+          <iframe id="deck" src="slides/gh-skills-builder-workshop.bento.html" title="Workshop slides: Turn any idea into a Hands-on GitHub Exercise" loading="lazy" allow="fullscreen 'none'"></iframe>
+        </div>
+        <div class="deck-controls">
+          <button type="button" class="btn btn-ghost" data-deck="prev" aria-controls="deck">← Previous</button>
+          <button type="button" class="btn btn-ghost" data-deck="next" aria-controls="deck">Next →</button>
+          <a class="btn btn-primary" href="slides/gh-skills-builder-workshop.bento.html" target="_blank" rel="noopener">Open in a new tab</a>
+        </div>
+        <p class="note">In the new tab, press <kbd>F</kbd> for full screen. The deck is a single HTML file built with <a href="https://github.com/nyblnet/bento">Bento</a>; save it to present offline.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="resources" aria-labelledby="resources-title">
+      <div class="wrap">
+        <h2 id="resources-title">Your next exercise starts here</h2>
+        <p class="section-lede">Bring an idea. Build a hands-on experience.</p>
+        <ul class="grid grid-3 links">
+          <li class="card"><h3><a href="https://gh.io/gh-skills-builder">gh-skills-builder</a></h3><p>The plugin: one orchestrator agent and five Agent Skills, available in Awesome Copilot.</p></li>
+          <li class="card"><h3><a href="https://github.com/github/awesome-copilot">Awesome Copilot</a></h3><p>The marketplace for community Copilot plugins, agents, skills, and instructions.</p></li>
+          <li class="card"><h3><a href="https://github.com/github-samples/tailspin-toys">Tailspin Toys</a></h3><p>The MIT-licensed sample app the exercise is built on. <code>handoff.sh</code> fetches it with its license.</p></li>
+          <li class="card"><h3><a href="https://github-samples.github.io/copilot-workshops/real-world-development/app/">Dev Days Copilot app lab</a></h3><p>The workshop that inspired this smaller scenario.</p></li>
+          <li class="card"><h3><a href="https://skills.github.com/">GitHub Skills</a></h3><p>Hands-on courses that run inside GitHub repositories, the format this workshop builds.</p></li>
+          <li class="card"><h3><a href="https://docs.github.com/copilot">GitHub Copilot docs</a></h3><p>Plugins, agents, skills, and custom instructions.</p></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Slides built with <a href="https://github.com/nyblnet/bento">Bento</a> (MIT). Set in <a href="https://github.com/github/mona-sans">Mona Sans</a> (SIL Open Font License 1.1). Slide artwork generated with Google Gemini. <a href="https://github.com/github-samples/tailspin-toys">Tailspin Toys</a> is MIT-licensed and is not included here.</p>
+    </div>
+  </footer>
+
+  <div class="sr-only" aria-live="polite" id="live"></div>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>
