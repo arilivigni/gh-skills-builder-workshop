@@ -209,7 +209,7 @@ def build(theme):
          "Repository instructions.\nConsistent quality reports.\nA report-only QA agent.", "2")
     base.add_badge(s, 6.37, 3.85, .48, ">", t, t["green_deep"])
     text(s, .85, 6.35, 11.6, .42,
-         "Rehearsed title: Cleared for Takeoff. The room can vote for another.", 24, t["green"], True)
+         "Working title: Cleared for Takeoff.", 24, t["green"], True)
     note(s, "0:03-0:04. Source scenario: the Dev Days Copilot app lab "
          "(https://github-samples.github.io/copilot-workshops/real-world-development/app/). "
          "We build a small slice of it, not the whole lab. Starter: "
@@ -382,6 +382,11 @@ def build(theme):
          "command: " + INSTALL + ". Questions to seed: What can Actions observe? Why is review report-only? "
          "What authorization is required to publish? What would your audience practice? Don't troubleshoot "
          "individual installations or start another workflow.")
+
+    for number, slide_obj in enumerate(list(prs.slides)[len(old_ids):], start=1):
+        if number > 1:
+            text(slide_obj, 12.15, 7.03, .55, .24, str(number), 11, t["muted"],
+                 align=PP_ALIGN.RIGHT, margin=0, fit=False)
 
     for sid in old_ids:
         prs.part.drop_rel(sid.rId)

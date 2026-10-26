@@ -277,6 +277,11 @@ def footnote(prefix, words):
     return text(f"{prefix}-footnote", 96, 628, 1088, 24, esc(words), 15, color=MUTED, line=1.3, fx=enter(9, "fade"))
 
 
+def slide_number(number):
+    return text(f"slide-number-{number}", 1190, 688, 32, 20, str(number), 14, 600, MUTED, MONO,
+                align="right", valign="middle", line=1)
+
+
 def badge(el_id, label_id, x, y, size, label, order, font=None):
     return [
         shape(el_id, "ellipse", x, y, size, size, BADGE, fx=enter(order)),
@@ -387,7 +392,7 @@ def build_slides():
                  fx=enter(i + 1)),
         ]
 
-    return [
+    slides = [
         slide("welcome", "Welcome", [
             image("cover-texture", 235, 0, 1045, 720, "texture", opacity=0.3, fx=KEN | {"ken": {"dir": "drift", "scale": 1.08, "duration": 24}}),
             image("cover-rail", 0, 0, 235, 720, "rail"),
@@ -453,7 +458,7 @@ def build_slides():
             *card("scenario", "card-b", "badge-b", 688, 216, 496, 296, "2", "Teach three habits",
                   ["Repository instructions.", "Consistent quality reports.", "A report-only QA agent."], 3, 30, 22),
             text("scenario-title-vote", 96, 552, 1088, 40,
-                 esc("Rehearsed title: Cleared for Takeoff. The room can vote for another."), 28, 700, ACCENT,
+                 esc("Working title: Cleared for Takeoff."), 28, 700, ACCENT,
                  line=1.3, fx=enter(4)),
         ]),
         slide("architect", "From builder to architect", [
@@ -557,6 +562,10 @@ def build_slides():
             text("splash-author", 770, 608, 414, 30, esc("Ari LiVigni"), 24, color=MUTED, line=1.25, fx=enter(3)),
         ], background=PANEL, hidden=True),
     ]
+    for number, current in enumerate(slides[1:], start=2):
+        if not current.get("hidden"):
+            current["elements"].append(slide_number(number))
+    return slides
 
 
 # --- Notes -----------------------------------------------------------------
