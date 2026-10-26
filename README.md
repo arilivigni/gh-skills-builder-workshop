@@ -68,10 +68,13 @@ Review is report-only. It changes nothing until you approve a separate fix round
 | [`demo-prestage-checklist.md`](demo-prestage-checklist.md) | Rehearsal, fallback preparation, and day-of checks |
 | [`handoff.sh`](handoff.sh) | Creates the private authoring repo and imports the Tailspin starter |
 | `gh-skills-builder-workshop-light.pptx`<br>`gh-skills-builder-workshop-dark.pptx` | Decks with the same content: 14 presented slides plus a hidden backup title slide (15). Speaker notes are synced from `run-of-show.md`. |
+| `gh-skills-builder-workshop-dark.bento.html` | The same 14 slides as a single-file [Bento](https://bento.page) deck that runs in a browser, with the dark deck's artwork and the same speaker notes. Generated; see [Rebuilding the decks](#rebuilding-the-decks). |
+| [`site/`](site/index.html) | The public workshop website: install steps, agenda, scenario, every prompt with a copy button, the hand-off script, and the slides. See [Workshop website](#workshop-website). |
 | [`visuals/`](visuals/slide-placement.md) | Slide artwork, the plugin QR code, and placement notes |
 | [`fallback/`](fallback/README.md) | Saved rehearsal outputs for each hard stop |
 | [`clips/`](clips/README.md) | Local-only fallback recordings (git-ignored) |
-| [`build/`](build/README.md) | Scripts to rebuild, validate, and preview the decks |
+| [`build/`](build/README.md) | Scripts to rebuild, validate, and preview the decks and the website |
+| [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Checks the website against `run-of-show.md` and publishes it to GitHub Pages |
 
 ## Prepare
 
@@ -92,7 +95,7 @@ Review is report-only. It changes nothing until you approve a separate fix round
 
 ## Deliver
 
-- Present the light or dark deck, whichever suits the room.
+- Present the light or dark PowerPoint deck, whichever suits the room, or the [Bento deck](#the-bento-deck) if you'd rather present from a browser.
 - Follow the [run of show](run-of-show.md). It has every slide cue, speaker note, prompt, and command, so you don't need presenter view or any other file. View it on GitHub so each prompt has a copy button.
 - Use **Interactive** mode throughout:
   - **Auto → Intelligence** for the outline quick chat;
@@ -123,9 +126,35 @@ As a result, the exercise's Step 0 opens only its own instructions issue.
 
 `--dry-run` builds the same commit in a local repository without creating or pushing anything on GitHub. It still clones Tailspin, so it needs a network connection. The script requires an authenticated `gh`, `git`, and `rsync`.
 
+## The Bento deck
+
+`gh-skills-builder-workshop-dark.bento.html` is one self-contained HTML file: the Bento app, the slides, the images, and the fonts. It works offline, with no install. Reveal.js runs the presentation.
+
+1. Open the file in Chrome or Edge, then present it.
+2. Press <kbd>S</kbd> for the speaker view with notes, <kbd>F</kbd> to toggle full screen, and <kbd>Esc</kbd> to stop.
+3. Advance with the arrow keys, a clicker, or a swipe. Clicking a slide does not advance it, and the on-screen arrows are hidden so they don't cover the slide.
+
+The deck is generated from the dark PowerPoint deck and the run of show. Changes made in the Bento editor are overwritten by the next build, so make them in `build/build-bento.py` instead.
+
+## Workshop website
+
+[`site/`](site/index.html) is a static, single-page site for attendees: what the plugin is, how to install it, the agenda, the scenario, the approval gates, every prompt with a copy button, the hand-off script to download, the slides, and links to go further. It has no build step and no dependencies.
+
+- **Preview it:** `python3 -m http.server --directory site 8000`, then open <http://localhost:8000>.
+- **Publish it:** in **Settings → Pages**, set **Source** to **GitHub Actions**. The [workflow](.github/workflows/pages.yml) checks every pull request that touches the site and deploys each push to `main`. The site is public even though this repository is private, and Pages for a private repository needs a paid plan.
+- **Keep it in sync:** the prompts and `site/downloads/handoff.sh` are copied from `run-of-show.md` and `handoff.sh` by `python3 build/sync-site.py`. The workflow fails if you forget.
+
+The embedded slides are a read-only copy of the Bento deck, without speaker notes. The page's social preview image uses the absolute URL `https://arilivigni.github.io/gh-skills-builder-workshop/`; update `og:image` in `site/index.html` if the site moves.
+
 ## Rebuilding the decks
 
-The committed decks are ready to present. Speaker notes come from [`run-of-show.md`](run-of-show.md): edit them there, then run `python3 build/sync-notes.py` to update both decks.
+The committed decks are ready to present. Speaker notes come from [`run-of-show.md`](run-of-show.md). After editing it, run:
+
+```bash
+python3 build/sync-notes.py   # notes in both PowerPoint decks
+python3 build/build-bento.py  # Bento deck and website slides
+python3 build/sync-site.py    # website prompts and handoff.sh copy
+```
 
 Slide 1 (the 2026 template title slide) and the hidden slide 15 were edited by hand after the last build. Rerunning `build/build-workshop-v2.py` overwrites them, so follow [`build/README.md`](build/README.md) before you rebuild. The GitHub presentation template the decks are built on is not included.
 
@@ -136,4 +165,6 @@ Slide 1 (the 2026 template title slide) and the hidden slide 15 were edited by h
 - **Scenario inspiration:** the [Dev Days Copilot app lab](https://github-samples.github.io/copilot-workshops/real-world-development/app/).
 - **Slide artwork:** generated with Google Gemini.
 - **Hubot Sans:** SIL Open Font License 1.1, bundled in `build/fonts/` with its license.
+- **Mona Sans:** [github/mona-sans](https://github.com/github/mona-sans), SIL Open Font License 1.1, bundled in `site/assets/fonts/` with its license and embedded in the Bento deck.
+- **Bento:** [bento.page](https://bento.page), MIT License. Its app is embedded in each `.bento.html` file.
 - **Slide design:** the 2026 GitHub Presentation Template.
