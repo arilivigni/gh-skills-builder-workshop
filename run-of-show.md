@@ -16,11 +16,11 @@ This file is the whole show: talk track, slide changes, prompts, and fallbacks, 
 
 ## The smaller scenario
 
-Build *Cleared for Takeoff: A Copilot Quick-Start*, a **15–20-minute learner exercise** with exactly **three graded steps**, inside Tailspin Toys. This is a small slice inspired by the [Dev Days Copilot app lab](https://github-samples.github.io/copilot-workshops/real-world-development/app/), not a conversion of that whole workshop.
+Build *Copilot app Cleared for Takeoff* (working title), a **15–20-minute learner exercise** with exactly **three graded steps**, inside Tailspin Toys. This is a small slice inspired by the [Dev Days Copilot app lab](https://github-samples.github.io/copilot-workshops/real-world-development/app/), not a conversion of that whole workshop.
 
 A new Tailspin Toys teammate prepares Copilot to work consistently in the repository: add one repository instruction, customize one reusable skill, and create one report-only QA agent. Tailspin provides context, not an application feature to implement.
 
-- **Rehearsed title:** *Cleared for Takeoff: A Copilot Quick-Start*. The room can vote for another at Gate 1.
+- **Working title:** *Copilot app Cleared for Takeoff*. This is the rehearsed default; the room can vote for another at Gate 1.
 - **Default repository:** `copilot-app-cleared-for-takeoff`
 - **Learner copy:** `skills-copilot-app-cleared-for-takeoff`
 
@@ -123,7 +123,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 >
 > **SAY:** Welcome! I'm Ari LiVigni, Sr. Learning Advocate and Agentic AI Engineer at GitHub. In the next 60 minutes we'll turn one small idea into a self-paced, hands-on GitHub Skills exercise, using the GitHub Copilot app and the gh-skills-builder plugin.
 >
-> **SAY:** The exercise is Cleared for Takeoff: a 15–20-minute Copilot quick-start inside Tailspin Toys, with three graded steps. Most of this session is live. The slides set the stage, then we build it in the Copilot app and see all four builder phases: outline, bootstrap, review, and publish.
+> **SAY:** The exercise's working title is Copilot app Cleared for Takeoff: a 15–20-minute Copilot quick-start inside Tailspin Toys, with three graded steps. Most of this session is live. The slides set the stage, then we build it in the Copilot app and see all four builder phases: outline, bootstrap, review, and publish.
 >
 > **DO:** Before you start talking, have the Copilot app open with a new quick chat ready (Interactive, Auto → Intelligence) and the rehearsal project already added as a fallback.
 >
@@ -235,15 +235,15 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 
 > **0:03–0:04 · Slide 5 of 14 · Today's scenario: Tailspin Toys**
 >
-> **SAY:** Here's what we'll build: Cleared for Takeoff, a 15–20-minute Copilot quick-start inside Tailspin Toys. Tailspin is a real, MIT-licensed sample app. Here it's starter code, not a feature to build.
+> **SAY:** Here's what we'll build: Copilot app Cleared for Takeoff, a 15–20-minute Copilot quick-start inside Tailspin Toys. Tailspin is a real, MIT-licensed sample app. Here it's starter code, not a feature to build.
 >
 > **SAY:** The learner practices three habits, one graded step each. First, add a TSDoc convention to the repository instructions. Second, give the existing quality-checks skill a consistent, evidence-based report format. Third, create a report-only QA agent.
 >
 > **SAY:** We're building the learning journey, not coding a Tailspin feature. No filtering, no npm install, no database, no browser tooling.
 >
-> **SAY:** Cleared for Takeoff is the title I rehearsed. In a minute the agent proposes a title and three repository names, and you get to vote on the exercise's identity. If we can't decide in 30 seconds, we keep this one.
+> **SAY:** Working title: Copilot app Cleared for Takeoff. That's the title I rehearsed. In a minute the agent proposes a title and three repository names, and you get to vote on the exercise's identity. If we can't decide in 30 seconds, we keep this one.
 >
-> **DO:** Nothing to paste. Point at the three habits, then at the rehearsed title line.
+> **DO:** Nothing to paste. Point at the three habits, then at the working title line.
 >
 > **CLOCK:** Move on by 0:04.
 
@@ -379,7 +379,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** Read the proposed title and three repository-name candidates aloud and take a vote: 30 seconds at most. If the room can't decide, keep the rehearsed default. Send Gate 1 once. If the room chose a different title or name, edit both in the message first:
 >
 > ```text
-> Approved. Use "Cleared for Takeoff: A Copilot Quick-Start" and repository name
+> Approved. Use "Copilot app Cleared for Takeoff" and repository name
 > copilot-app-cleared-for-takeoff. Keep exactly the three approved learner
 > steps. Return the complete outline artifact in one Markdown code block,
 > including the title, Repository name, and Learner copy header. Do not create a

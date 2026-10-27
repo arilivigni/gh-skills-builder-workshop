@@ -1,6 +1,6 @@
 # Fallback artifacts
 
-Save these files here during rehearsal so each hard stop in the [run of show](../run-of-show.md) has something real to show. They come from your own rehearsal of the three-step *Cleared for Takeoff* exercise, not from the earlier five-step filtering scenario. Label them as rehearsal output when you use them on stage.
+Save these files here during rehearsal so each hard stop in the [run of show](../run-of-show.md) has something real to show. They come from your own rehearsal of the three-step *Copilot app Cleared for Takeoff* exercise, not from the earlier five-step filtering scenario. Label them as rehearsal output when you use them on stage.
 
 | File | Hard stop | What to save |
 | --- | --- | --- |
