@@ -6,7 +6,7 @@ Prepare the **three-step** Copilot customization exercise, not the former five-s
 
 - [ ] Exactly three graded steps: TSDoc repository instruction, evidence-based quality-checks reporting contract, and report-only QA agent.
 - [ ] No required filtering, application changes, dependency installation, database, browser tests, feature PR/merge, or local-mode verification.
-- [ ] Agent Merge, Plan/Autopilot, filtering, MCP, and canvases are discussion-only extensions.
+- [ ] Agent Merge, Plan/Autopilot, filtering, and MCP are discussion-only extensions. Prompt 3a is an optional read-only browser canvas preview for the presenter, not a graded learner task.
 - [ ] `handoff.sh` imports Tailspin without its upstream issue sources (`.github/bootstrap-issues/`). Step 0 opens only the exercise instructions issue, not a separate feature issue.
 - [ ] Do not reuse old five-step outline artifacts, checkpoint builds, review findings, or recordings as quick-start evidence.
 
@@ -37,6 +37,7 @@ Prepare the **three-step** Copilot customization exercise, not the former five-s
 | `04-publish-ready` | Reviewed build plus readiness materials; no implication that public release is authorized |
 
 - [ ] Save `fallback/review-findings.md` with actual findings or an honest no-findings report. If a genuine finding is available, save the fix diff and re-review evidence as `fallback/fix-and-rereview.md`. Do not inject a defect to manufacture a live finding.
+- [ ] Rehearse optional Prompt 3a: the browser canvas shows the full README, all numbered steps in numeric order, and completion material with working navigation and local images, without changing exercise files or uploading private content. Check that temporary preview files stay outside the repo and any server binds only to loopback. Skip it if unavailable or over the review time box.
 - [ ] Save `fallback/publish-readiness.md` with checks performed, risks, PR description, release notes, launch checklist, and unexecuted publication plan.
 - [ ] Save `fallback/learner-validation.md` with a baseline-fail/correct-change-pass example and links or captured output identifying the tested revision and learner copy. Keep that copy separate from the authoring template.
 

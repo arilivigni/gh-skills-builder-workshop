@@ -49,6 +49,23 @@ class FenceTests(unittest.TestCase):
         self.assertTrue(found["install"].startswith("copilot plugin install gh-skills-builder@awesome-copilot"))
         self.assertIn("/publish-github-skills-exercise", found["prompt-4"])
 
+    def test_review_preview_covers_all_content_without_authorizing_changes(self):
+        found = site.prompts(site.SOURCE.read_text(encoding="utf-8"))
+        preview = found["prompt-3a"]
+        for expected in (
+            "README.md", ".github/steps/*.md", "numeric order", "x-review.md",
+            "browser canvas", "Keep all exercise files unchanged",
+            "temporary directory outside the repository", "loopback only",
+            "Do not upload private content", "report it explicitly",
+        ):
+            with self.subTest(expected=expected):
+                self.assertIn(expected, preview)
+        page = site.PAGE.read_text(encoding="utf-8")
+        rendered = site.fill(page, found)
+        self.assertIn("<!-- prompt:prompt-3a -->" + site.render(preview) + "<!-- /prompt -->", rendered)
+        self.assertLess(rendered.index("<!-- prompt:prompt-3 -->"), rendered.index("<!-- prompt:prompt-3a -->"))
+        self.assertLess(rendered.index("<!-- prompt:prompt-3a -->"), rendered.index("<!-- prompt:prompt-3b -->"))
+
     def test_moved_prompt_is_reported(self):
         markdown = notes(4, "```bash\nsomething else\n```")
         with self.assertRaisesRegex(site.SiteError, "install: slide 4 code block 1"):
