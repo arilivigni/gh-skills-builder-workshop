@@ -37,9 +37,16 @@ Prepare the **three-step** Copilot customization exercise, not the former five-s
 | `04-publish-ready` | Reviewed build plus readiness materials; no implication that public release is authorized |
 
 - [ ] Save `fallback/review-findings.md` with actual findings or an honest no-findings report. If a genuine finding is available, save the fix diff and re-review evidence as `fallback/fix-and-rereview.md`. Do not inject a defect to manufacture a live finding.
-- [ ] Rehearse optional Prompt 3a: the browser canvas shows the full README, all numbered steps in numeric order, and completion material with working navigation and local images, without changing exercise files or uploading private content. Check that temporary preview files stay outside the repo and any server binds only to loopback. Skip it if unavailable or over the review time box.
+- [ ] Rehearse optional Prompt 3a: the browser canvas shows the full README, all numbered steps in numeric order, and completion material with working navigation and local images, without changing exercise files or uploading private content. Check that temporary preview files stay outside the repo and any server binds only to loopback. Leave the rehearsal project's canvas open as the fallback if the live one is unavailable or slow.
+- [ ] Decide before presenting what Prompt 3a replaces. If it runs live, show the saved fix from `fallback/fix-and-rereview.md` instead of a live Prompt 3b fix round, so Phase III still ends by 0:35.
 - [ ] Save `fallback/publish-readiness.md` with checks performed, risks, PR description, release notes, launch checklist, and unexecuted publication plan.
 - [ ] Save `fallback/learner-validation.md` with a baseline-fail/correct-change-pass example and links or captured output identifying the tested revision and learner copy. Keep that copy separate from the authoring template.
+- [ ] Pre-stage the learner copies for the Phase II fail-to-pass demo. The live authoring repo never becomes a template on stage, so these must come from the rehearsal build:
+  1. In the rehearsal repo, turn on **Settings → Template repository**. It can stay private.
+  2. Use **Use this template** to create two learner copies, one for the live demo and one as a backup. Wait for each Step 0 issue to open.
+  3. In both copies, trigger a failing Step 1 run, for example with an incomplete `.github/copilot-instructions.md` edit, so the feedback comment is visible. Confirm the trigger in the generated step 1 workflow.
+  4. Complete Step 1 in the backup copy only; it becomes the passed-state fallback. A copy can pass Step 1 only once, so don't rehearse the pass in the live copy.
+  5. Save the correct TSDoc workshop section where you can paste it on stage.
 
 ## Validate the learner path before presenting
 
@@ -74,7 +81,8 @@ Prepare the **three-step** Copilot customization exercise, not the former five-s
 - [ ] Confirm auth, network, venue QR/link access, and backup connection. Do not expose tokens on screen.
 - [ ] Put the chosen deck on the shared screen, and open the [run of show](run-of-show.md) on GitHub on your own display so its prompts have copy buttons. You don't need presenter view.
 - [ ] Start a fresh quick chat. Keep the pre-added rehearsal project available and a terminal ready as the command fallback.
-- [ ] Open the separate learner copy and its saved baseline-fail/correct-change-pass evidence.
+- [ ] Open the live learner copy at its failing Step 1 feedback, the passed backup copy, and the saved baseline-fail/correct-change-pass evidence. Keep the TSDoc section ready to paste.
+- [ ] Keep the rehearsal project's browser canvas open as the Prompt 3a fallback.
 - [ ] Open all fallback Markdown files and verify they describe the three-step quick-start. Match identity headers when using a different repo.
 - [ ] Copy all clips and reports to local disk, not a network/cloud-only location. Test-play every clip with the actual display/audio. If any is unavailable, choose the matching saved evidence beforehand; repo branches alone do not replace an offline Actions result.
 - [ ] Enable Do Not Disturb, use readable editor/app font sizes, and hide unrelated windows.
