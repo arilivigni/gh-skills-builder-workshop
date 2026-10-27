@@ -335,20 +335,39 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app.** New quick chat: Interactive, Auto → Intelligence. Paste Prompt 1:
 >
 > ```text
-> @github-skills-orchestrator Use /create-github-skills-outline to design a 15–20-minute GitHub Skills exercise for a new Tailspin Toys teammate.
+> @github-skills-orchestrator Use /create-github-skills-outline to design a
+> 15–20-minute GitHub Skills exercise for a new Tailspin Toys teammate.
 >
 > Keep exactly three graded learner steps:
-> 1. Add a clearly delimited workshop section to .github/copilot-instructions.md requiring TSDoc for new or changed exported TypeScript functions. Preserve existing instructions.
-> 2. Customize .github/skills/quality-checks/SKILL.md so reports include command, passed/failed/blocked status, evidence, and reasons for failed or blocked checks. Preserve frontmatter. Never invent command results.
-> 3. Create .github/agents/qa.agent.md with name and description frontmatter. It reports requirements with evidence, asks before implementation changes, and never commits or opens PRs.
+> 1. Add a clearly delimited workshop section to .github/copilot-instructions.md
+>    requiring TSDoc for new or changed exported TypeScript functions. Preserve
+>    existing instructions.
+> 2. Customize .github/skills/quality-checks/SKILL.md so reports include
+>    command, passed/failed/blocked status, evidence, and reasons for failed or
+>    blocked checks. Preserve frontmatter. Never invent command results.
+> 3. Create .github/agents/qa.agent.md with name and description frontmatter. It
+>    reports requirements with evidence, asks before implementation changes, and
+>    never commits or opens PRs.
 >
-> For each step include a short Theory block, one Activity, success criteria, a repository-observable validation signal, and useful failure feedback. Validate the content of learner artifacts, not just file existence. Do not claim Actions can prove which local app mode or agent was used.
+> For each step include a short Theory block, one Activity, success criteria, a
+> repository-observable validation signal, and useful failure feedback. Validate
+> the content of learner artifacts, not just file existence. Do not claim
+> Actions can prove which local app mode or agent was used.
 >
-> This is a small slice of the Dev Days Copilot app scenario, not a conversion of the full lab. Do not add filtering, application changes, dependency installation, database setup, browser tests, feature PR/merge requirements, or extra graded steps. Mention Agent Merge, MCP, and canvases only as optional next steps.
+> This is a small slice of the Dev Days Copilot app scenario, not a conversion
+> of the full lab. Do not add filtering, application changes, dependency
+> installation, database setup, browser tests, feature PR/merge requirements, or
+> extra graded steps. Mention Agent Merge, MCP, and canvases only as optional
+> next steps.
 >
-> Propose a title and three lowercase-hyphenated repository names containing copilot-app, without a skills- prefix. Recommend one.
+> Propose a title and three lowercase-hyphenated repository names containing
+> copilot-app, without a skills- prefix. Recommend one.
 >
-> We are in a quick chat with no repository. After I approve the identity and outline, return the complete standalone exercise-outline.md content in one Markdown code block. Start with # <approved title>, then Repository name: <approved name>, then Learner copy: skills-<approved name>. Do not claim a file has been saved.
+> We are in a quick chat with no repository. After I approve the identity and
+> outline, return the complete standalone exercise-outline.md content in one
+> Markdown code block. Start with # <approved title>, then Repository name:
+> <approved name>, then Learner copy: skills-<approved name>. Do not claim a
+> file has been saved.
 > ```
 >
 > **SAY:** While it generates: every step gets a short Theory block, one Activity, success criteria, a validation signal the repository can observe, and useful feedback for when the learner gets it wrong.
@@ -360,7 +379,11 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** Read the proposed title and three repository-name candidates aloud and take a vote: 30 seconds at most. If the room can't decide, keep the rehearsed default. Send Gate 1 once. If the room chose a different title or name, edit both in the message first:
 >
 > ```text
-> Approved. Use "Cleared for Takeoff: A Copilot Quick-Start" and repository name copilot-app-cleared-for-takeoff. Keep exactly the three approved learner steps. Return the complete outline artifact in one Markdown code block, including the title, Repository name, and Learner copy header. Do not create a repository or claim to have saved a file.
+> Approved. Use "Cleared for Takeoff: A Copilot Quick-Start" and repository name
+> copilot-app-cleared-for-takeoff. Keep exactly the three approved learner
+> steps. Return the complete outline artifact in one Markdown code block,
+> including the title, Repository name, and Learner copy header. Do not create a
+> repository or claim to have saved a file.
 > ```
 >
 > **SAY:** Gate 1 approves the idea and the name. It creates nothing: no repo, no files.
@@ -385,11 +408,15 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **STAY on slide 9; the screen stays on the Copilot app.** In the same quick chat, replace `<workshop-repo>` with the absolute path of your clone of this workshop repo (a quick chat has no working directory), `<you>` with the demo owner, and the repository name if the room chose another. Then send:
 >
 > ```text
-> Hand-off Authorization: I authorize running this existing workshop script once to create my private authoring repository, import the Tailspin starter code, commit, and push. This is not permission to publish a public template or run the exercise lifecycle.
+> Hand-off Authorization: I authorize running this existing workshop script once
+> to create my private authoring repository, import the Tailspin starter code,
+> commit, and push. This is not permission to publish a public template or run
+> the exercise lifecycle.
 >
 > <workshop-repo>/handoff.sh <you> copilot-app-cleared-for-takeoff
 >
-> Show the output and local folder path. Do not create other repositories or files beyond the script's work.
+> Show the output and local folder path. Do not create other repositories or
+> files beyond the script's work.
 > ```
 >
 > **DO:** Inspect the command permission request, then approve it out loud. Not every configuration shows one.
@@ -434,21 +461,36 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app,** the new project session. Paste Prompt 2, replacing only `<paste the approved outline artifact>` with the whole outline block you copied:
 >
 > ```text
-> @github-skills-orchestrator Phase I is approved. Use /bootstrap-github-skills-exercise with this outline artifact:
+> @github-skills-orchestrator Phase I is approved. Use
+> /bootstrap-github-skills-exercise with this outline artifact:
 >
 > <paste the approved outline artifact>
 >
-> First save that artifact verbatim to .github/exercise-outline.md. Use its identity header for the README and Copy Exercise badge. Stop and ask if its repository name differs from this repo.
+> First save that artifact verbatim to .github/exercise-outline.md. Use its
+> identity header for the README and Copy Exercise badge. Stop and ask if its
+> repository name differs from this repo.
 >
-> Build exactly three graded steps plus the standard completion/review material. Preserve Tailspin's MIT LICENSE and credit github-samples/tailspin-toys in the README.
+> Build exactly three graded steps plus the standard completion/review material.
+> Preserve Tailspin's MIT LICENSE and credit github-samples/tailspin-toys in the
+> README.
 >
-> Do not complete the learner tasks: leave the new TSDoc workshop section, the quality-reporting contract, and qa.agent.md for the learner to add. Inspect the existing starter files first so validation requires a meaningful learner change instead of passing the baseline.
+> Do not complete the learner tasks: leave the new TSDoc workshop section, the
+> quality-reporting contract, and qa.agent.md for the learner to add. Inspect
+> the existing starter files first so validation requires a meaningful learner
+> change instead of passing the baseline.
 >
-> Step 0 opens the normal exercise instructions issue only; do not seed any other issues. Keep existing Tailspin workflows intact, but do not depend on their checks for exercise progression.
+> Step 0 opens the normal exercise instructions issue only; do not seed any
+> other issues. Keep existing Tailspin workflows intact, but do not depend on
+> their checks for exercise progression.
 >
-> Use lightweight artifact checks for all three steps. Do not run or require npm ci, app builds, database setup, Playwright, or application tests. Check frontmatter and required reporting/behavioral instructions with helpful failure feedback, not file-exists or arbitrary whole-file text matching alone.
+> Use lightweight artifact checks for all three steps. Do not run or require npm
+> ci, app builds, database setup, Playwright, or application tests. Check
+> frontmatter and required reporting/behavioral instructions with helpful
+> failure feedback, not file-exists or arbitrary whole-file text matching alone.
 >
-> Follow the GitHub Skills workflow contract, use scoped permissions, and inspect workflow event/path interactions. Report what was actually validated and what remains untested. Do not publish or create another repository.
+> Follow the GitHub Skills workflow contract, use scoped permissions, and
+> inspect workflow event/path interactions. Report what was actually validated
+> and what remains untested. Do not publish or create another repository.
 > ```
 >
 > **DO:** When `.github/exercise-outline.md` appears, show it: the agent's first action saves the outline word for word. Then show the README and Copy Exercise badge, the three step files, the completion material, and how the workflows chain.
@@ -466,7 +508,8 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** Gate 2, by 0:27. Accept the build only if its evidence supports acceptance:
 >
 > ```text
-> I accept this build round. Do not make more changes. I will send the report-only review request next.
+> I accept this build round. Do not make more changes. I will send the
+> report-only review request next.
 > ```
 >
 > **DO:** If the build has unresolved failures, don't accept it or move it toward publication. Name the remaining problems and switch to the known-good rehearsal build.
@@ -491,16 +534,24 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app,** same project session, same settings. Paste Prompt 3:
 >
 > ```text
-> @github-skills-orchestrator Use /review-github-skills-exercise. Report findings without editing files.
+> @github-skills-orchestrator Use /review-github-skills-exercise. Report
+> findings without editing files.
 >
-> Check the approved three-step scope, learner clarity and accessibility, workflow safety, and validation reliability. In particular:
+> Check the approved three-step scope, learner clarity and accessibility,
+> workflow safety, and validation reliability. In particular:
 > - The untouched starter must not already pass the three learner checks.
-> - Each correct learner artifact should pass; an incomplete or incorrect artifact should fail with useful feedback. Inspect and, where feasible, exercise those cases.
-> - Step 0 must open only the exercise instructions issue and create no other issues.
-> - No grade should depend on npm, an app build, browser tooling, or proof that the learner used a local Copilot mode.
-> - Repository-observable checks of written policies must not be described as proof of model behavior.
+> - Each correct learner artifact should pass; an incomplete or incorrect
+>   artifact should fail with useful feedback. Inspect and, where feasible,
+>   exercise those cases.
+> - Step 0 must open only the exercise instructions issue and create no other
+>   issues.
+> - No grade should depend on npm, an app build, browser tooling, or proof that
+>   the learner used a local Copilot mode.
+> - Repository-observable checks of written policies must not be described as
+>   proof of model behavior.
 >
-> Prioritize actual release blockers and include evidence and untested risks. If no findings are supported, say so; do not invent a finding for the demo.
+> Prioritize actual release blockers and include evidence and untested risks. If
+> no findings are supported, say so; do not invent a finding for the demo.
 > ```
 >
 > **CLOCK:** Hard stop 0:30. If the live review isn't finished, use the saved review in `fallback/review-findings.md`.
@@ -510,7 +561,9 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** Prompt 3b approves a fix for that one finding. Replace `<finding-id>` with the finding you chose:
 >
 > ```text
-> I approve a bootstrap fix round for <finding-id> only. Make the targeted fix and run its relevant checks. Stop for my build approval before running the review again.
+> I approve a bootstrap fix round for <finding-id> only. Make the targeted fix
+> and run its relevant checks. Stop for my build approval before running the
+> review again.
 > ```
 >
 > **DO:** Inspect the change and its check results. Then accept the fix round and ask for a fresh review:
@@ -528,7 +581,8 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** Gate 3, only if no known release blockers remain:
 >
 > ```text
-> No known release blockers remain in the reviewed build. Prepare release-readiness materials only; do not publish.
+> No known release blockers remain in the reviewed build. Prepare
+> release-readiness materials only; do not publish.
 > ```
 >
 > **DO:** If blockers remain, name them honestly and use the reviewed rehearsal build for Phase IV.
@@ -551,11 +605,16 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app,** same project session. Stay in Interactive; never Autopilot here, because the authorization gate has to stop for you. Paste Prompt 4, or show the saved `04-publish-ready` materials:
 >
 > ```text
-> @github-skills-orchestrator Use /publish-github-skills-exercise for the approved three-step exercise. Read its identity from .github/exercise-outline.md.
+> @github-skills-orchestrator Use /publish-github-skills-exercise for the
+> approved three-step exercise. Read its identity from
+> .github/exercise-outline.md.
 >
-> Prepare a short readiness report: validation evidence, untested risks, a PR description, brief release notes, and a launch checklist. Clearly separate completed checks from required fresh-copy testing.
+> Prepare a short readiness report: validation evidence, untested risks, a PR
+> description, brief release notes, and a launch checklist. Clearly separate
+> completed checks from required fresh-copy testing.
 >
-> Do not create or transfer repositories, change visibility, push, or publish. Stop at the authorization boundary.
+> Do not create or transfer repositories, change visibility, push, or publish.
+> Stop at the authorization boundary.
 > ```
 >
 > **DO:** Keep the output short: observed validation evidence, untested risks, PR description, release notes, and launch checklist. If you have the rehearsal's fresh learner-copy result, show it.
@@ -565,9 +624,12 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** Prompt 4b shows the publication plan. Replace `<demo-owner>/<approved-name>` with a real demo owner and the approved name, for example `<demo-owner>/copilot-app-cleared-for-takeoff`. Send it, show the plan, and do not authorize it:
 >
 > ```text
-> Use /publish-github-skills-exercise to show, without executing, a plan for publishing this exercise to <demo-owner>/<approved-name> as a public template.
+> Use /publish-github-skills-exercise to show, without executing, a plan for
+> publishing this exercise to <demo-owner>/<approved-name> as a public template.
 >
-> Show the exact target, visibility, changes, commands, and readiness blockers. Wait for separate explicit authorization. This message is not authorization to create, push, transfer, change settings, or publish.
+> Show the exact target, visibility, changes, commands, and readiness blockers.
+> Wait for separate explicit authorization. This message is not authorization to
+> create, push, transfer, change settings, or publish.
 > ```
 >
 > **SAY:** Creating the private repo earlier wasn't permission to publish, transfer, change visibility, push, or create a public template. Publish can create a GitHub repository, but only with an explicit yes for the exact owner, repository, and visibility. Before that, make sure the README badge points at the approved target.
@@ -592,7 +654,11 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app.** Show this prompt without sending it:
 >
 > ```text
-> @github-skills-orchestrator Use /orchestrate-github-skills-exercise to coordinate the same three-step Tailspin quick-start. Read the approved outline from .github/exercise-outline.md. Stop after each build for approval; review without edits; request separate approval for fixes and any publication. Do not expand the scope or publish without explicit authorization.
+> @github-skills-orchestrator Use /orchestrate-github-skills-exercise to
+> coordinate the same three-step Tailspin quick-start. Read the approved outline
+> from .github/exercise-outline.md. Stop after each build for approval; review
+> without edits; request separate approval for fixes and any publication. Do not
+> expand the scope or publish without explicit authorization.
 > ```
 >
 > **DO:** **SCREEN → back to slide 13.**
