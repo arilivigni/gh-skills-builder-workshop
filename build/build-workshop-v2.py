@@ -209,7 +209,7 @@ def build(theme):
          "Repository instructions.\nConsistent quality reports.\nA report-only QA agent.", "2")
     base.add_badge(s, 6.37, 3.85, .48, ">", t, t["green_deep"])
     text(s, .85, 6.35, 11.6, .42,
-         "Working title: Cleared for Takeoff.", 24, t["green"], True)
+         "Working Title: Copilot app Cleared for Takeoff", 24, t["green"], True)
     note(s, "0:03-0:04. Source scenario: the Dev Days Copilot app lab "
          "(https://github-samples.github.io/copilot-workshops/real-world-development/app/). "
          "We build a small slice of it, not the whole lab. Starter: "

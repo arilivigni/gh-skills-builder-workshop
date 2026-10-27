@@ -138,7 +138,7 @@ class DocumentTests(unittest.TestCase):
     def test_scenario_uses_working_title_copy(self):
         scenario = next(s for s in self.doc["slides"] if s["id"] == "scenario")
         elements = {el["id"]: el for el in scenario["elements"]}
-        self.assertEqual(elements["scenario-title-vote"]["html"], "Working title: Cleared for Takeoff.")
+        self.assertEqual(elements["scenario-title-vote"]["html"], "Working Title: Copilot app Cleared for Takeoff")
 
     def test_element_ids_are_unique_per_slide_and_assets_resolve(self):
         assets = self.doc["assets"]
