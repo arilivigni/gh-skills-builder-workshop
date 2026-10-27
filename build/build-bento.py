@@ -458,7 +458,7 @@ def build_slides():
             *card("scenario", "card-b", "badge-b", 688, 216, 496, 296, "2", "Teach three habits",
                   ["Repository instructions.", "Consistent quality reports.", "A report-only QA agent."], 3, 30, 22),
             text("scenario-title-vote", 96, 552, 1088, 40,
-                 esc("Working title: Cleared for Takeoff."), 28, 700, ACCENT,
+                 esc("Working Title: Copilot app Cleared for Takeoff"), 28, 700, ACCENT,
                  line=1.3, fx=enter(4)),
         ]),
         slide("architect", "From builder to architect", [
