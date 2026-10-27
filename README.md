@@ -2,7 +2,7 @@
 
 A presenter kit for a live, 60-minute introductory workshop on the [gh-skills-builder](https://gh.io/gh-skills-builder) plugin for GitHub Copilot.
 
-On stage, you turn an idea into *Cleared for Takeoff: A Copilot Quick-Start*, a small GitHub Skills exercise built on the [Tailspin Toys](https://github.com/github-samples/tailspin-toys) sample app. Along the way you show every part of the plugin: its one agent, `@github-skills-orchestrator`, and its five skills.
+On stage, you turn an idea into *Copilot app Cleared for Takeoff* (working title), a small GitHub Skills exercise built on the [Tailspin Toys](https://github.com/github-samples/tailspin-toys) sample app. Along the way you show every part of the plugin: its one agent, `@github-skills-orchestrator`, and its five skills.
 
 | | |
 | --- | --- |
