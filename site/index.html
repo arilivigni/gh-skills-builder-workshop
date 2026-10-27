@@ -300,32 +300,59 @@
         <h3 class="phase-title"><span class="phase-num">01</span> Outline and hand-off <span class="where">Quick chat</span></h3>
         <div class="code-block">
           <p class="code-label">Prompt 1 · Create the outline</p>
-          <pre><code><!-- prompt:prompt-1 -->@github-skills-orchestrator Use /create-github-skills-outline to design a 15–20-minute GitHub Skills exercise for a new Tailspin Toys teammate.
+          <pre><code><!-- prompt:prompt-1 -->@github-skills-orchestrator Use /create-github-skills-outline to design a
+15–20-minute GitHub Skills exercise for a new Tailspin Toys teammate.
 
 Keep exactly three graded learner steps:
-1. Add a clearly delimited workshop section to .github/copilot-instructions.md requiring TSDoc for new or changed exported TypeScript functions. Preserve existing instructions.
-2. Customize .github/skills/quality-checks/SKILL.md so reports include command, passed/failed/blocked status, evidence, and reasons for failed or blocked checks. Preserve frontmatter. Never invent command results.
-3. Create .github/agents/qa.agent.md with name and description frontmatter. It reports requirements with evidence, asks before implementation changes, and never commits or opens PRs.
+1. Add a clearly delimited workshop section to .github/copilot-instructions.md
+   requiring TSDoc for new or changed exported TypeScript functions. Preserve
+   existing instructions.
+2. Customize .github/skills/quality-checks/SKILL.md so reports include
+   command, passed/failed/blocked status, evidence, and reasons for failed or
+   blocked checks. Preserve frontmatter. Never invent command results.
+3. Create .github/agents/qa.agent.md with name and description frontmatter. It
+   reports requirements with evidence, asks before implementation changes, and
+   never commits or opens PRs.
 
-For each step include a short Theory block, one Activity, success criteria, a repository-observable validation signal, and useful failure feedback. Validate the content of learner artifacts, not just file existence. Do not claim Actions can prove which local app mode or agent was used.
+For each step include a short Theory block, one Activity, success criteria, a
+repository-observable validation signal, and useful failure feedback. Validate
+the content of learner artifacts, not just file existence. Do not claim
+Actions can prove which local app mode or agent was used.
 
-This is a small slice of the Dev Days Copilot app scenario, not a conversion of the full lab. Do not add filtering, application changes, dependency installation, database setup, browser tests, feature PR/merge requirements, or extra graded steps. Mention Agent Merge, MCP, and canvases only as optional next steps.
+This is a small slice of the Dev Days Copilot app scenario, not a conversion
+of the full lab. Do not add filtering, application changes, dependency
+installation, database setup, browser tests, feature PR/merge requirements, or
+extra graded steps. Mention Agent Merge, MCP, and canvases only as optional
+next steps.
 
-Propose a title and three lowercase-hyphenated repository names containing copilot-app, without a skills- prefix. Recommend one.
+Propose a title and three lowercase-hyphenated repository names containing
+copilot-app, without a skills- prefix. Recommend one.
 
-We are in a quick chat with no repository. After I approve the identity and outline, return the complete standalone exercise-outline.md content in one Markdown code block. Start with # &lt;approved title&gt;, then Repository name: &lt;approved name&gt;, then Learner copy: skills-&lt;approved name&gt;. Do not claim a file has been saved.<!-- /prompt --></code></pre>
+We are in a quick chat with no repository. After I approve the identity and
+outline, return the complete standalone exercise-outline.md content in one
+Markdown code block. Start with # &lt;approved title&gt;, then Repository name:
+&lt;approved name&gt;, then Learner copy: skills-&lt;approved name&gt;. Do not claim a
+file has been saved.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Gate 1 · Approve the outline and identity</p>
-          <pre><code><!-- prompt:gate-1 -->Approved. Use "Cleared for Takeoff: A Copilot Quick-Start" and repository name copilot-app-cleared-for-takeoff. Keep exactly the three approved learner steps. Return the complete outline artifact in one Markdown code block, including the title, Repository name, and Learner copy header. Do not create a repository or claim to have saved a file.<!-- /prompt --></code></pre>
+          <pre><code><!-- prompt:gate-1 -->Approved. Use "Cleared for Takeoff: A Copilot Quick-Start" and repository name
+copilot-app-cleared-for-takeoff. Keep exactly the three approved learner
+steps. Return the complete outline artifact in one Markdown code block,
+including the title, Repository name, and Learner copy header. Do not create a
+repository or claim to have saved a file.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Hand-off Authorization · Create the private authoring repo</p>
-          <pre><code><!-- prompt:handoff -->Hand-off Authorization: I authorize running this existing workshop script once to create my private authoring repository, import the Tailspin starter code, commit, and push. This is not permission to publish a public template or run the exercise lifecycle.
+          <pre><code><!-- prompt:handoff -->Hand-off Authorization: I authorize running this existing workshop script once
+to create my private authoring repository, import the Tailspin starter code,
+commit, and push. This is not permission to publish a public template or run
+the exercise lifecycle.
 
 <mark class="ph">&lt;workshop-repo&gt;</mark>/handoff.sh <mark class="ph">&lt;you&gt;</mark> copilot-app-cleared-for-takeoff
 
-Show the output and local folder path. Do not create other repositories or files beyond the script's work.<!-- /prompt --></code></pre>
+Show the output and local folder path. Do not create other repositories or
+files beyond the script's work.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Or run the hand-off yourself in a terminal</p>
@@ -335,44 +362,70 @@ Show the output and local folder path. Do not create other repositories or files
         <h3 class="phase-title"><span class="phase-num">02</span> Bootstrap <span class="where">Project session</span></h3>
         <div class="code-block">
           <p class="code-label">Prompt 2 · Build the exercise</p>
-          <pre><code><!-- prompt:prompt-2 -->@github-skills-orchestrator Phase I is approved. Use /bootstrap-github-skills-exercise with this outline artifact:
+          <pre><code><!-- prompt:prompt-2 -->@github-skills-orchestrator Phase I is approved. Use
+/bootstrap-github-skills-exercise with this outline artifact:
 
 <mark class="ph">&lt;paste the approved outline artifact&gt;</mark>
 
-First save that artifact verbatim to .github/exercise-outline.md. Use its identity header for the README and Copy Exercise badge. Stop and ask if its repository name differs from this repo.
+First save that artifact verbatim to .github/exercise-outline.md. Use its
+identity header for the README and Copy Exercise badge. Stop and ask if its
+repository name differs from this repo.
 
-Build exactly three graded steps plus the standard completion/review material. Preserve Tailspin's MIT LICENSE and credit github-samples/tailspin-toys in the README.
+Build exactly three graded steps plus the standard completion/review material.
+Preserve Tailspin's MIT LICENSE and credit github-samples/tailspin-toys in the
+README.
 
-Do not complete the learner tasks: leave the new TSDoc workshop section, the quality-reporting contract, and qa.agent.md for the learner to add. Inspect the existing starter files first so validation requires a meaningful learner change instead of passing the baseline.
+Do not complete the learner tasks: leave the new TSDoc workshop section, the
+quality-reporting contract, and qa.agent.md for the learner to add. Inspect
+the existing starter files first so validation requires a meaningful learner
+change instead of passing the baseline.
 
-Step 0 opens the normal exercise instructions issue only; do not seed any other issues. Keep existing Tailspin workflows intact, but do not depend on their checks for exercise progression.
+Step 0 opens the normal exercise instructions issue only; do not seed any
+other issues. Keep existing Tailspin workflows intact, but do not depend on
+their checks for exercise progression.
 
-Use lightweight artifact checks for all three steps. Do not run or require npm ci, app builds, database setup, Playwright, or application tests. Check frontmatter and required reporting/behavioral instructions with helpful failure feedback, not file-exists or arbitrary whole-file text matching alone.
+Use lightweight artifact checks for all three steps. Do not run or require npm
+ci, app builds, database setup, Playwright, or application tests. Check
+frontmatter and required reporting/behavioral instructions with helpful
+failure feedback, not file-exists or arbitrary whole-file text matching alone.
 
-Follow the GitHub Skills workflow contract, use scoped permissions, and inspect workflow event/path interactions. Report what was actually validated and what remains untested. Do not publish or create another repository.<!-- /prompt --></code></pre>
+Follow the GitHub Skills workflow contract, use scoped permissions, and
+inspect workflow event/path interactions. Report what was actually validated
+and what remains untested. Do not publish or create another repository.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Gate 2 · Accept the build</p>
-          <pre><code><!-- prompt:gate-2 -->I accept this build round. Do not make more changes. I will send the report-only review request next.<!-- /prompt --></code></pre>
+          <pre><code><!-- prompt:gate-2 -->I accept this build round. Do not make more changes. I will send the
+report-only review request next.<!-- /prompt --></code></pre>
         </div>
 
         <h3 class="phase-title"><span class="phase-num">03</span> Review <span class="where">Same project session</span></h3>
         <div class="code-block">
           <p class="code-label">Prompt 3 · Report-only review</p>
-          <pre><code><!-- prompt:prompt-3 -->@github-skills-orchestrator Use /review-github-skills-exercise. Report findings without editing files.
+          <pre><code><!-- prompt:prompt-3 -->@github-skills-orchestrator Use /review-github-skills-exercise. Report
+findings without editing files.
 
-Check the approved three-step scope, learner clarity and accessibility, workflow safety, and validation reliability. In particular:
+Check the approved three-step scope, learner clarity and accessibility,
+workflow safety, and validation reliability. In particular:
 - The untouched starter must not already pass the three learner checks.
-- Each correct learner artifact should pass; an incomplete or incorrect artifact should fail with useful feedback. Inspect and, where feasible, exercise those cases.
-- Step 0 must open only the exercise instructions issue and create no other issues.
-- No grade should depend on npm, an app build, browser tooling, or proof that the learner used a local Copilot mode.
-- Repository-observable checks of written policies must not be described as proof of model behavior.
+- Each correct learner artifact should pass; an incomplete or incorrect
+  artifact should fail with useful feedback. Inspect and, where feasible,
+  exercise those cases.
+- Step 0 must open only the exercise instructions issue and create no other
+  issues.
+- No grade should depend on npm, an app build, browser tooling, or proof that
+  the learner used a local Copilot mode.
+- Repository-observable checks of written policies must not be described as
+  proof of model behavior.
 
-Prioritize actual release blockers and include evidence and untested risks. If no findings are supported, say so; do not invent a finding for the demo.<!-- /prompt --></code></pre>
+Prioritize actual release blockers and include evidence and untested risks. If
+no findings are supported, say so; do not invent a finding for the demo.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Prompt 3b (optional) · Approve one fix</p>
-          <pre><code><!-- prompt:prompt-3b -->I approve a bootstrap fix round for <mark class="ph">&lt;finding-id&gt;</mark> only. Make the targeted fix and run its relevant checks. Stop for my build approval before running the review again.<!-- /prompt --></code></pre>
+          <pre><code><!-- prompt:prompt-3b -->I approve a bootstrap fix round for <mark class="ph">&lt;finding-id&gt;</mark> only. Make the targeted fix
+and run its relevant checks. Stop for my build approval before running the
+review again.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Accept the fix and review again</p>
@@ -380,29 +433,42 @@ Prioritize actual release blockers and include evidence and untested risks. If n
         </div>
         <div class="code-block">
           <p class="code-label">Gate 3 · Sign off the review</p>
-          <pre><code><!-- prompt:gate-3 -->No known release blockers remain in the reviewed build. Prepare release-readiness materials only; do not publish.<!-- /prompt --></code></pre>
+          <pre><code><!-- prompt:gate-3 -->No known release blockers remain in the reviewed build. Prepare
+release-readiness materials only; do not publish.<!-- /prompt --></code></pre>
         </div>
 
         <h3 class="phase-title"><span class="phase-num">04</span> Publish readiness <span class="where">Same project session</span></h3>
         <div class="code-block">
           <p class="code-label">Prompt 4 · Prepare release readiness</p>
-          <pre><code><!-- prompt:prompt-4 -->@github-skills-orchestrator Use /publish-github-skills-exercise for the approved three-step exercise. Read its identity from .github/exercise-outline.md.
+          <pre><code><!-- prompt:prompt-4 -->@github-skills-orchestrator Use /publish-github-skills-exercise for the
+approved three-step exercise. Read its identity from
+.github/exercise-outline.md.
 
-Prepare a short readiness report: validation evidence, untested risks, a PR description, brief release notes, and a launch checklist. Clearly separate completed checks from required fresh-copy testing.
+Prepare a short readiness report: validation evidence, untested risks, a PR
+description, brief release notes, and a launch checklist. Clearly separate
+completed checks from required fresh-copy testing.
 
-Do not create or transfer repositories, change visibility, push, or publish. Stop at the authorization boundary.<!-- /prompt --></code></pre>
+Do not create or transfer repositories, change visibility, push, or publish.
+Stop at the authorization boundary.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Prompt 4b · Show the publish plan, without authorizing it</p>
-          <pre><code><!-- prompt:prompt-4b -->Use /publish-github-skills-exercise to show, without executing, a plan for publishing this exercise to <mark class="ph">&lt;demo-owner&gt;</mark>/<mark class="ph">&lt;approved-name&gt;</mark> as a public template.
+          <pre><code><!-- prompt:prompt-4b -->Use /publish-github-skills-exercise to show, without executing, a plan for
+publishing this exercise to <mark class="ph">&lt;demo-owner&gt;</mark>/<mark class="ph">&lt;approved-name&gt;</mark> as a public template.
 
-Show the exact target, visibility, changes, commands, and readiness blockers. Wait for separate explicit authorization. This message is not authorization to create, push, transfer, change settings, or publish.<!-- /prompt --></code></pre>
+Show the exact target, visibility, changes, commands, and readiness blockers.
+Wait for separate explicit authorization. This message is not authorization to
+create, push, transfer, change settings, or publish.<!-- /prompt --></code></pre>
         </div>
 
         <h3 class="phase-title"><span class="phase-num">05</span> The whole loop <span class="where">Shown, not run on stage</span></h3>
         <div class="code-block">
           <p class="code-label">Orchestrate every phase with the same gates</p>
-          <pre><code><!-- prompt:orchestrate -->@github-skills-orchestrator Use /orchestrate-github-skills-exercise to coordinate the same three-step Tailspin quick-start. Read the approved outline from .github/exercise-outline.md. Stop after each build for approval; review without edits; request separate approval for fixes and any publication. Do not expand the scope or publish without explicit authorization.<!-- /prompt --></code></pre>
+          <pre><code><!-- prompt:orchestrate -->@github-skills-orchestrator Use /orchestrate-github-skills-exercise to
+coordinate the same three-step Tailspin quick-start. Read the approved outline
+from .github/exercise-outline.md. Stop after each build for approval; review
+without edits; request separate approval for fixes and any publication. Do not
+expand the scope or publish without explicit authorization.<!-- /prompt --></code></pre>
         </div>
       </div>
     </section>
