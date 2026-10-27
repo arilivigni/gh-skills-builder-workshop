@@ -422,6 +422,27 @@ Prioritize actual release blockers and include evidence and untested risks. If
 no findings are supported, say so; do not invent a finding for the demo.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
+          <p class="code-label">Prompt 3a (optional) · Preview README and all steps in a browser canvas</p>
+          <pre><code><!-- prompt:prompt-3a -->Show the current exercise README.md and all .github/steps/*.md files in a
+browser canvas for a read-only learner-experience review.
+
+Render the full Markdown, not summaries or source code. Put the README first,
+then every numbered step in numeric order, then x-review.md. Include any
+other step Markdown files in the navigation. Label each page with its source
+path and provide a table of contents plus previous/next navigation. Preserve
+headings, ordered lists, code blocks, links, images, details blocks, and
+GitHub-style callouts so we can inspect readability and the learner journey.
+Clearly label unresolved template variables as an unrendered preview; do not
+invent their values or claim this is the live issue experience.
+
+Keep all exercise files unchanged. If a local preview needs generated files,
+use a temporary directory outside the repository and bind any server to
+loopback only. Do not upload private content to an external renderer.
+Do not run workflows, click Copy Exercise, create repositories, or publish.
+If a source file or browser canvas is unavailable, report it explicitly.<!-- /prompt --></code></pre>
+        </div>
+        <p>Keep this read-only visual pass within the review time box. It previews the exercise Markdown, not the Tailspin app, and does not replace workflow checks or fresh-copy testing. Skip it if time is tight or the canvas is unavailable.</p>
+        <div class="code-block">
           <p class="code-label">Prompt 3b (optional) · Approve one fix</p>
           <pre><code><!-- prompt:prompt-3b -->I approve a bootstrap fix round for <mark class="ph">&lt;finding-id&gt;</mark> only. Make the targeted fix
 and run its relevant checks. Stop for my build approval before running the

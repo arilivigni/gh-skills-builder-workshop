@@ -32,7 +32,7 @@ A new Tailspin Toys teammate prepares Copilot to work consistently in the reposi
 
 Validate artifact requirements, not whether a learner actually invoked Copilot, a mode, a skill, or an agent. Checking written instructions does not prove future model compliance. Do not accept file existence alone. No filtering feature, app installation, database, browser tooling, or feature merge is required.
 
-**Demonstrate:** the one orchestrator agent, all four phase skills, the approval gates, one review/fix/re-review loop, and the publish authorization boundary. **Show but do not run** the fifth skill, `/orchestrate-github-skills-exercise`, during the recap. Filtering, local modes, Agent Merge, MCP, and canvases are brief extensions, not additional live demos.
+**Demonstrate:** the one orchestrator agent, all four phase skills, the approval gates, one review/fix/re-review loop, and the publish authorization boundary. **Show but do not run** the fifth skill, `/orchestrate-github-skills-exercise`, during the recap. Filtering, local modes, Agent Merge, and MCP are brief extensions, not additional live demos. The browser canvas preview in Prompt 3a is optional and stays within the review time box.
 
 **Success at minute 60:** the audience has seen the full builder lifecycle, the outline-to-repo hand-off, observable learner validation and feedback, and explicit human approvals. The live build is not represented as publicly released or fully tested unless evidence supports it.
 
@@ -555,6 +555,30 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > ```
 >
 > **CLOCK:** Hard stop 0:30. If the live review isn't finished, use the saved review in `fallback/review-findings.md`.
+>
+> **DO:** Prompt 3a is an optional visual pass within the same review time box. It previews the exercise content, not the Tailspin app, and does not replace workflow checks or fresh-copy testing. Skip it if time is tight:
+>
+> ```text
+> Show the current exercise README.md and all .github/steps/*.md files in a
+> browser canvas for a read-only learner-experience review.
+>
+> Render the full Markdown, not summaries or source code. Put the README first,
+> then every numbered step in numeric order, then x-review.md. Include any
+> other step Markdown files in the navigation. Label each page with its source
+> path and provide a table of contents plus previous/next navigation. Preserve
+> headings, ordered lists, code blocks, links, images, details blocks, and
+> GitHub-style callouts so we can inspect readability and the learner journey.
+> Clearly label unresolved template variables as an unrendered preview; do not
+> invent their values or claim this is the live issue experience.
+>
+> Keep all exercise files unchanged. If a local preview needs generated files,
+> use a temporary directory outside the repository and bind any server to
+> loopback only. Do not upload private content to an external renderer.
+> Do not run workflows, click Copy Exercise, create repositories, or publish.
+> If a source file or browser canvas is unavailable, report it explicitly.
+> ```
+>
+> **DO:** Check the README, each of the three steps, and the completion page in the canvas. Treat visual issues as findings, not permission to edit. If the preview cannot open promptly, inspect the source Markdown and continue within the existing hard stops.
 >
 > **DO:** Pick one real, supported finding, such as a weak check, a workflow collision, or a learner accessibility issue. Don't invent a defect for the demo. Point out that the review hasn't changed any files.
 >

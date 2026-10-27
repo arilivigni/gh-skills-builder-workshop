@@ -35,7 +35,7 @@ The exercise teaches a new Tailspin teammate three Copilot customization habits.
 2. Give the existing `quality-checks` skill an evidence-based reporting format.
 3. Create a report-only QA agent in `.github/agents/qa.agent.md`.
 
-Filtering features, Plan and Autopilot practice, Agent Merge, MCP, and canvases are mentioned as extensions only.
+Filtering features, Plan and Autopilot practice, Agent Merge, and MCP are mentioned as extensions only. Phase III includes an optional read-only browser canvas prompt to preview the exercise README and all steps; it adds no learner requirement.
 
 ## Session flow and approvals
 
