@@ -245,7 +245,7 @@ def build(theme):
         "0:05-0:06 (slides 7-8). One orchestrator, five skills. The orchestration skill runs the full lifecycle; "
         "the four phase skills own outline, bootstrap, review, and publish requirements. "
         "Agent SKILLS are automated workflows/capabilities for an agent, not five separate agents. "
-        "Select @github-skills-orchestrator and use /orchestrate-github-skills-exercise "
+        "Select @github-skills-orchestrator and use /github-skills-orchestrate "
         "or call a phase skill directly.")
     art("02-approval-gated-lifecycle",
         "0:05-0:06, with slide 7. Four phases, explicit human gates. Approve the outline before generation; approve "
@@ -264,7 +264,7 @@ def build(theme):
          "Choose an exercise title and an eye-catching repository name.", "2")
     card(s, 8.79, 2.55, 3.8, 3.45, "Validation",
          "For every graded step: what can a workflow actually check?", "3")
-    text(s, .8, 6.3, 11.8, .42, "/create-github-skills-outline", 24, t["green"], True)
+    text(s, .8, 6.3, 11.8, .42, "/github-skills-outline", 24, t["green"], True)
     note(s, "0:06-0:12, keep fully live. Quick chat: Interactive mode, Auto > Intelligence. Paste Prompt 1. "
          "Narrate one Theory/Activity pair and its validation signal. Ask: what would prove the learner "
          "changed the reporting contract, rather than merely created a file? A bare file-exists check is "
@@ -293,7 +293,7 @@ def build(theme):
     text(s, 7.45, 2.72, 5.05, .5, "The learner gets", 27, bold=True)
     text(s, 7.45, 3.55, 5.0, 1.85,
          "A clear entry point.\nIssue-driven practice.\nChecks and useful feedback.", 24, t["body"])
-    text(s, .8, 6.3, 11.8, .42, "/bootstrap-github-skills-exercise", 23, t["green"], True)
+    text(s, .8, 6.3, 11.8, .42, "/github-skills-bootstrap", 23, t["green"], True)
     note(s, "0:16-0:27. Project session on the new repo: Interactive, Auto > Balance. Paste Prompt 2, "
          "replacing only its placeholder with the whole outline artifact; its header carries the approved "
          "title and repository name, and the new session cannot see the quick-chat history. Its first "
@@ -312,7 +312,7 @@ def build(theme):
 
     # 11: The review circuit is more useful than a text-only divider.
     art("03-review-fix-circuit",
-        "0:27-0:35. /review-github-skills-exercise. Same session: Interactive, Auto > Balance. Paste Prompt 3. "
+        "0:27-0:35. /github-skills-review. Same session: Interactive, Auto > Balance. Paste Prompt 3. "
         "Three questions: does the untouched starter fail, does correct learner work pass, and is the "
         "feedback clear and safe? Review reports findings without editing files. Hard stop 0:30: use the "
         "saved review if the live one is unfinished. Pick one real, supported finding, such as a weak grader, "
@@ -331,7 +331,7 @@ def build(theme):
          "Validation evidence.\nPR copy and release notes.\nLaunch checklist and known risks.", "P")
     card(s, 6.92, 2.55, 5.65, 3.45, "Pause for authorization",
          "Confirm the exact owner/repo.\nConfirm visibility.\nThen create, push, or transfer.", "H")
-    text(s, .8, 6.3, 11.8, .42, "/publish-github-skills-exercise", 24, t["green"], True)
+    text(s, .8, 6.3, 11.8, .42, "/github-skills-publish", 24, t["green"], True)
     note(s, "0:35-0:41. Same session: Interactive, Auto > Balance. Never Autopilot here: the authorization "
          "gate must stop for you. Paste Prompt 4, or show the saved 04-publish-ready materials. Keep the "
          "output short: observed validation evidence, untested risks, PR description, release notes, and "
@@ -354,7 +354,7 @@ def build(theme):
     ]):
         card(s, .75 + i * 3.04, 2.7, 2.75, 3.4, title, body, str(i + 1))
     footer(s, "Outline and review generalize to other tutorials. Bootstrap targets the GitHub Skills contract.")
-    note(s, "0:41-0:45. Show the /orchestrate-github-skills-exercise recap prompt without running it: that is "
+    note(s, "0:41-0:45. Show the /github-skills-orchestrate recap prompt without running it: that is "
          "the fifth skill, and it sequences the same lifecycle; it is not a second agent. Mention filtering "
          "and tests, local Plan/Autopilot practice, PR and Agent Merge, MCP, and canvases as extensions for a "
          "longer exercise; don't demo them. Recap for an educator (a classroom convention) and an enterprise "

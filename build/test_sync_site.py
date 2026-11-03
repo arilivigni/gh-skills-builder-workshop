@@ -47,7 +47,7 @@ class FenceTests(unittest.TestCase):
         found = site.prompts(site.SOURCE.read_text(encoding="utf-8"))
         self.assertEqual(set(found), set(site.PROMPTS))
         self.assertTrue(found["install"].startswith("copilot plugin install gh-skills-builder@awesome-copilot"))
-        self.assertIn("/publish-github-skills-exercise", found["prompt-4"])
+        self.assertIn("/github-skills-publish", found["prompt-4"])
 
     def test_review_preview_covers_all_content_without_authorizing_changes(self):
         found = site.prompts(site.SOURCE.read_text(encoding="utf-8"))

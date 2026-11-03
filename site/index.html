@@ -35,34 +35,49 @@
           <li><a href="#scenario">Scenario</a></li>
           <li><a href="#lifecycle">Lifecycle</a></li>
           <li><a href="#prompts">Prompts</a></li>
-          <li><a href="#slides">Slides</a></li>
           <li><a href="#resources">Resources</a></li>
         </ul>
       </nav>
+      <a class="nav-cta" href="slides/gh-skills-builder-workshop.bento.html" target="_blank" rel="noopener">Slides <span aria-hidden="true">↗</span><span class="sr-only">(opens the full-screen deck in a new tab)</span></a>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="kicker">Live workshop · 60 minutes</p>
-          <h1 id="hero-title">Turn any idea into a Hands-on GitHub Exercise</h1>
-          <p class="lede">GitHub Copilot app/CLI and the <strong>gh-skills-builder</strong> plugin.</p>
-          <p>Watch one idea become <em>Copilot app Cleared for Takeoff</em> (working title), a 15–20-minute GitHub Skills exercise built on Tailspin Toys. Every prompt from the session is on this page, so you can replay it yourself.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="https://gh.io/gh-skills-builder">Get the plugin</a>
-            <a class="btn btn-ghost" href="#slides">View the slides</a>
-          </div>
+      <div class="wrap hero-frame">
+        <div class="hero-rail" aria-hidden="true">
+          <img class="rail-mark" src="assets/img/github-mark.svg" alt="" width="202" height="195">
+          <svg class="rail-glyph" viewBox="0 0 150 130" focusable="false">
+            <line x1="75" y1="26" x2="75" y2="64"></line>
+            <line x1="75" y1="64" x2="22" y2="104"></line>
+            <line x1="75" y1="64" x2="128" y2="104"></line>
+            <circle cx="75" cy="13" r="13"></circle>
+            <circle cx="15" cy="110" r="13"></circle>
+            <circle cx="135" cy="110" r="13"></circle>
+          </svg>
+          <span class="rail-block rail-block-grey"></span>
+          <span class="rail-block rail-block-green"></span>
         </div>
-        <aside class="presenter" aria-label="Presenter">
-          <img src="assets/img/headshot.webp" alt="Ari LiVigni" width="387" height="267">
-          <div>
-            <p class="presenter-name">Ari LiVigni</p>
-            <p class="presenter-role">Sr. Learning Advocate and Agentic AI Engineer</p>
-            <p class="presenter-role">GitHub</p>
+        <div class="hero-main">
+          <div class="hero-copy">
+            <p class="kicker">Live workshop · 60 minutes</p>
+            <h1 id="hero-title">Turn any idea into a Hands-on GitHub Exercise</h1>
+            <p class="lede">GitHub Copilot app/CLI and the <strong>gh-skills-builder</strong> plugin.</p>
+            <p>Watch one idea become <em>Copilot app Cleared for Takeoff</em> (working title), a 15–20-minute GitHub Skills exercise built on Tailspin Toys. Every prompt from the session is on this page, so you can replay it yourself.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="slides/gh-skills-builder-workshop.bento.html" target="_blank" rel="noopener">View the slides <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></a>
+              <a class="btn btn-ghost" href="https://gh.io/gh-skills-builder">Get the plugin</a>
+            </div>
           </div>
-        </aside>
+          <aside class="presenter" aria-label="Presenter">
+            <img src="assets/img/headshot.webp" alt="Ari LiVigni" width="387" height="267">
+            <div>
+              <p class="presenter-name">Ari LiVigni</p>
+              <p class="presenter-role">Sr. Learning Advocate and Agentic AI Engineer</p>
+              <p class="presenter-role">GitHub</p>
+            </div>
+          </aside>
+        </div>
       </div>
       <div class="wrap">
         <dl class="facts">
@@ -134,7 +149,7 @@
           <p class="code-label">Confirm the install</p>
           <pre><code><!-- prompt:plugin-list -->copilot plugin list<!-- /prompt --></code></pre>
         </div>
-        <p class="note"><code>@github-skills-orchestrator</code> is the <strong>agent</strong>; the slash commands are <strong>skills</strong>.</p>
+        <p class="note"><code>@github-skills-orchestrator</code> is the <strong>agent</strong>; the slash commands are <strong>skills</strong>. Install gh-skills-builder <strong>3.0.0 or later</strong>: earlier releases use different skill names than the prompts on this page.</p>
       </div>
     </section>
 
@@ -144,11 +159,11 @@
         <p class="section-lede">Mostly live. Checkpoints protect the demo: every live segment has a hard stop and a rehearsed fallback.</p>
         <ol class="timeline">
           <li><span class="time">00–06</span><div><h3>Get oriented</h3><p>Plugins, installation, and the quick-start scenario.</p></div></li>
-          <li><span class="time">06–16</span><div><h3>Outline + hand-off</h3><p>Three learner steps, a name, and a private repo. <code>/create-github-skills-outline</code>, then <code>handoff.sh</code>.</p></div></li>
-          <li><span class="time">16–27</span><div><h3>Bootstrap</h3><p>From outline to files, plus one fail-to-pass check. <code>/bootstrap-github-skills-exercise</code></p></div></li>
-          <li><span class="time">27–35</span><div><h3>Review</h3><p>Report findings, approve one fix, review again. <code>/review-github-skills-exercise</code></p></div></li>
-          <li><span class="time">35–41</span><div><h3>Publish readiness</h3><p>Evidence and a launch plan, without publishing. <code>/publish-github-skills-exercise</code></p></div></li>
-          <li><span class="time">41–60</span><div><h3>Recap + Q&amp;A</h3><p>Takeaways by 0:45, with <code>/orchestrate-github-skills-exercise</code> shown but not run. A buffer runs 0:45–0:50, and Q&amp;A from 0:50 is protected.</p></div></li>
+          <li><span class="time">06–16</span><div><h3>Outline + hand-off</h3><p>Three learner steps, a name, and a private repo. <code>/github-skills-outline</code>, then <code>handoff.sh</code>.</p></div></li>
+          <li><span class="time">16–27</span><div><h3>Bootstrap</h3><p>From outline to files, plus one fail-to-pass check. <code>/github-skills-bootstrap</code></p></div></li>
+          <li><span class="time">27–35</span><div><h3>Review</h3><p>Report findings, approve one fix, review again. <code>/github-skills-review</code></p></div></li>
+          <li><span class="time">35–41</span><div><h3>Publish readiness</h3><p>Evidence and a launch plan, without publishing. <code>/github-skills-publish</code></p></div></li>
+          <li><span class="time">41–60</span><div><h3>Recap + Q&amp;A</h3><p>Takeaways by 0:45, with <code>/github-skills-orchestrate</code> shown but not run. A buffer runs 0:45–0:50, and Q&amp;A from 0:50 is protected.</p></div></li>
         </ol>
       </div>
     </section>
@@ -218,28 +233,28 @@
             <span class="phase-num">01</span>
             <h3>Outline</h3>
             <p>Decide what success looks like: outcome, identity, and what a workflow can actually check.</p>
-            <code>/create-github-skills-outline</code>
+            <code>/github-skills-outline</code>
           </li>
           <li class="card">
             <span class="phase-num">02</span>
             <h3>Bootstrap</h3>
             <p>Make the outline runnable: README, step files, and workflows in the current repository.</p>
-            <code>/bootstrap-github-skills-exercise</code>
+            <code>/github-skills-bootstrap</code>
           </li>
           <li class="card">
             <span class="phase-num">03</span>
             <h3>Review</h3>
             <p>Report findings without editing. Approve one fix, then review again.</p>
-            <code>/review-github-skills-exercise</code>
+            <code>/github-skills-review</code>
           </li>
           <li class="card">
             <span class="phase-num">04</span>
             <h3>Publish</h3>
             <p>Prepare first. Authorize separately. Release-ready content is not permission to publish it.</p>
-            <code>/publish-github-skills-exercise</code>
+            <code>/github-skills-publish</code>
           </li>
         </ol>
-        <p class="note">The fifth skill, <code>/orchestrate-github-skills-exercise</code>, runs the whole loop with the same approval gates.</p>
+        <p class="note">The fifth skill, <code>/github-skills-orchestrate</code>, runs the whole loop with the same approval gates.</p>
         <div class="grid grid-2 art-pair">
           <figure class="art">
             <img src="assets/img/art-lifecycle.webp" alt="From idea to exercise: Outline, Bootstrap, Review, and Publish in sequence, each followed by a human approval: outline approved, build satisfactory, review signed off, publish authorized." width="1920" height="1080" loading="lazy" decoding="async">
@@ -300,7 +315,7 @@
         <h3 class="phase-title"><span class="phase-num">01</span> Outline and hand-off <span class="where">Quick chat</span></h3>
         <div class="code-block">
           <p class="code-label">Prompt 1 · Create the outline</p>
-          <pre><code><!-- prompt:prompt-1 -->@github-skills-orchestrator Use /create-github-skills-outline to design a
+          <pre><code><!-- prompt:prompt-1 -->@github-skills-orchestrator Use /github-skills-outline to design a
 15–20-minute GitHub Skills exercise for a new Tailspin Toys teammate.
 
 Keep exactly three graded learner steps:
@@ -363,7 +378,7 @@ files beyond the script's work.<!-- /prompt --></code></pre>
         <div class="code-block">
           <p class="code-label">Prompt 2 · Build the exercise</p>
           <pre><code><!-- prompt:prompt-2 -->@github-skills-orchestrator Phase I is approved. Use
-/bootstrap-github-skills-exercise with this outline artifact:
+/github-skills-bootstrap with this outline artifact:
 
 <mark class="ph">&lt;paste the approved outline artifact&gt;</mark>
 
@@ -402,7 +417,7 @@ report-only review request next.<!-- /prompt --></code></pre>
         <h3 class="phase-title"><span class="phase-num">03</span> Review <span class="where">Same project session</span></h3>
         <div class="code-block">
           <p class="code-label">Prompt 3 · Report-only review</p>
-          <pre><code><!-- prompt:prompt-3 -->@github-skills-orchestrator Use /review-github-skills-exercise. Report
+          <pre><code><!-- prompt:prompt-3 -->@github-skills-orchestrator Use /github-skills-review. Report
 findings without editing files.
 
 Check the approved three-step scope, learner clarity and accessibility,
@@ -461,7 +476,7 @@ release-readiness materials only; do not publish.<!-- /prompt --></code></pre>
         <h3 class="phase-title"><span class="phase-num">04</span> Publish readiness <span class="where">Same project session</span></h3>
         <div class="code-block">
           <p class="code-label">Prompt 4 · Prepare release readiness</p>
-          <pre><code><!-- prompt:prompt-4 -->@github-skills-orchestrator Use /publish-github-skills-exercise for the
+          <pre><code><!-- prompt:prompt-4 -->@github-skills-orchestrator Use /github-skills-publish for the
 approved three-step exercise. Read its identity from
 .github/exercise-outline.md.
 
@@ -474,7 +489,7 @@ Stop at the authorization boundary.<!-- /prompt --></code></pre>
         </div>
         <div class="code-block">
           <p class="code-label">Prompt 4b · Show the publish plan, without authorizing it</p>
-          <pre><code><!-- prompt:prompt-4b -->Use /publish-github-skills-exercise to show, without executing, a plan for
+          <pre><code><!-- prompt:prompt-4b -->Use /github-skills-publish to show, without executing, a plan for
 publishing this exercise to <mark class="ph">&lt;demo-owner&gt;</mark>/<mark class="ph">&lt;approved-name&gt;</mark> as a public template.
 
 Show the exact target, visibility, changes, commands, and readiness blockers.
@@ -485,7 +500,7 @@ create, push, transfer, change settings, or publish.<!-- /prompt --></code></pre
         <h3 class="phase-title"><span class="phase-num">05</span> The whole loop <span class="where">Shown, not run on stage</span></h3>
         <div class="code-block">
           <p class="code-label">Orchestrate every phase with the same gates</p>
-          <pre><code><!-- prompt:orchestrate -->@github-skills-orchestrator Use /orchestrate-github-skills-exercise to
+          <pre><code><!-- prompt:orchestrate -->@github-skills-orchestrator Use /github-skills-orchestrate to
 coordinate the same three-step Tailspin quick-start. Read the approved outline
 from .github/exercise-outline.md. Stop after each build for approval; review
 without edits; request separate approval for fixes and any publication. Do not
@@ -551,8 +566,9 @@ expand the scope or publish without explicit authorization.<!-- /prompt --></cod
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
+    <div class="wrap footer-inner">
       <p>Slides built with <a href="https://github.com/nyblnet/bento">Bento</a> (MIT). Set in <a href="https://github.com/github/mona-sans">Mona Sans</a> (SIL Open Font License 1.1). Slide artwork generated with Google Gemini. <a href="https://github.com/github-samples/tailspin-toys">Tailspin Toys</a> is MIT-licensed and is not included here.</p>
+      <a class="footer-mark" href="#top" aria-label="Back to top"><img src="assets/img/github-mark.svg" alt="" width="28" height="27"></a>
     </div>
   </footer>
 

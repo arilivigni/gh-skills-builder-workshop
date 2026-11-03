@@ -32,7 +32,7 @@ A new Tailspin Toys teammate prepares Copilot to work consistently in the reposi
 
 Validate artifact requirements, not whether a learner actually invoked Copilot, a mode, a skill, or an agent. Checking written instructions does not prove future model compliance. Do not accept file existence alone. No filtering feature, app installation, database, browser tooling, or feature merge is required.
 
-**Demonstrate:** the one orchestrator agent, all four phase skills, the approval gates, one review/fix/re-review loop, and the publish authorization boundary. **Show but do not run** the fifth skill, `/orchestrate-github-skills-exercise`, during the recap. Filtering, local modes, Agent Merge, and MCP are brief extensions, not additional live demos. The browser canvas preview in Prompt 3a is optional and stays within the review time box.
+**Demonstrate:** the one orchestrator agent, all four phase skills, the approval gates, one review/fix/re-review loop, and the publish authorization boundary. **Show but do not run** the fifth skill, `/github-skills-orchestrate`, during the recap. Filtering, local modes, Agent Merge, and MCP are brief extensions, not additional live demos. The browser canvas preview in Prompt 3a is optional and stays within the review time box.
 
 **Success at minute 60:** the audience has seen the full builder lifecycle, the outline-to-repo hand-off, observable learner validation and feedback, and explicit human approvals. The live build is not represented as publicly released or fully tested unless evidence supports it.
 
@@ -82,7 +82,7 @@ Confirm the install:
 copilot plugin list
 ```
 
-Confirm the installed release, agent availability, slash commands, and mode/model controls in rehearsal. Do not depend on an old release number or unreleased local changes. `@github-skills-orchestrator` is the **agent**; the slash commands are **skills**.
+Confirm the installed release, agent availability, slash commands, and mode/model controls in rehearsal. Do not depend on an old release number or unreleased local changes. `@github-skills-orchestrator` is the **agent**; the slash commands are **skills**. These prompts use the skill names introduced in gh-skills-builder 3.0.0, so install release 3.0.0 or later; earlier releases use different skill names (see "Migrating to 3.0" in the [plugin README](https://github.com/arilivigni/gh-skills-builder#whats-included)).
 
 Use **one quick chat** for Prompt 1, Gate 1, and Hand-off Authorization. Then use **one project session** for Prompts 2–4.
 
@@ -335,7 +335,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app.** New quick chat: Interactive, Auto → Intelligence. Paste Prompt 1:
 >
 > ```text
-> @github-skills-orchestrator Use /create-github-skills-outline to design a
+> @github-skills-orchestrator Use /github-skills-outline to design a
 > 15–20-minute GitHub Skills exercise for a new Tailspin Toys teammate.
 >
 > Keep exactly three graded learner steps:
@@ -462,7 +462,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 >
 > ```text
 > @github-skills-orchestrator Phase I is approved. Use
-> /bootstrap-github-skills-exercise with this outline artifact:
+> /github-skills-bootstrap with this outline artifact:
 >
 > <paste the approved outline artifact>
 >
@@ -534,7 +534,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app,** same project session, same settings. Paste Prompt 3:
 >
 > ```text
-> @github-skills-orchestrator Use /review-github-skills-exercise. Report
+> @github-skills-orchestrator Use /github-skills-review. Report
 > findings without editing files.
 >
 > Check the approved three-step scope, learner clarity and accessibility,
@@ -629,7 +629,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app,** same project session. Stay in Interactive; never Autopilot here, because the authorization gate has to stop for you. Paste Prompt 4, or show the saved `04-publish-ready` materials:
 >
 > ```text
-> @github-skills-orchestrator Use /publish-github-skills-exercise for the
+> @github-skills-orchestrator Use /github-skills-publish for the
 > approved three-step exercise. Read its identity from
 > .github/exercise-outline.md.
 >
@@ -648,7 +648,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** Prompt 4b shows the publication plan. Replace `<demo-owner>/<approved-name>` with a real demo owner and the approved name, for example `<demo-owner>/copilot-app-cleared-for-takeoff`. Send it, show the plan, and do not authorize it:
 >
 > ```text
-> Use /publish-github-skills-exercise to show, without executing, a plan for
+> Use /github-skills-publish to show, without executing, a plan for
 > publishing this exercise to <demo-owner>/<approved-name> as a public template.
 >
 > Show the exact target, visibility, changes, commands, and readiness blockers.
@@ -678,7 +678,7 @@ Interactive keeps the presenter in the approval loop; it is not a security bound
 > **DO:** **SCREEN → Copilot app.** Show this prompt without sending it:
 >
 > ```text
-> @github-skills-orchestrator Use /orchestrate-github-skills-exercise to
+> @github-skills-orchestrator Use /github-skills-orchestrate to
 > coordinate the same three-step Tailspin quick-start. Read the approved outline
 > from .github/exercise-outline.md. Stop after each build for approval; review
 > without edits; request separate approval for fixes and any publication. Do not

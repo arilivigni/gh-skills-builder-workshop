@@ -16,12 +16,12 @@ On stage, you turn an idea into *Copilot app Cleared for Takeoff* (working title
 | Time | Segment | Plugin feature | Slides |
 | --- | --- | --- | --- |
 | 0:00–0:06 | Set the stage | Plugin install, one agent and five skills | 1–8 |
-| 0:06–0:12 | Phase I: outline and Gate 1 | `/create-github-skills-outline` | 9 |
+| 0:06–0:12 | Phase I: outline and Gate 1 | `/github-skills-outline` | 9 |
 | 0:12–0:16 | Hand-off Authorization | `handoff.sh` creates the private authoring repo | 9 |
-| 0:16–0:27 | Phase II: bootstrap and one fail-to-pass check | `/bootstrap-github-skills-exercise` | 10 |
-| 0:27–0:35 | Phase III: report-only review and one approved fix | `/review-github-skills-exercise` | 11 |
-| 0:35–0:41 | Phase IV: release readiness, no publication | `/publish-github-skills-exercise` | 12 |
-| 0:41–0:45 | Recap | `/orchestrate-github-skills-exercise`, shown but not run | 13 |
+| 0:16–0:27 | Phase II: bootstrap and one fail-to-pass check | `/github-skills-bootstrap` | 10 |
+| 0:27–0:35 | Phase III: report-only review and one approved fix | `/github-skills-review` | 11 |
+| 0:35–0:41 | Phase IV: release readiness, no publication | `/github-skills-publish` | 12 |
+| 0:41–0:45 | Recap | `/github-skills-orchestrate`, shown but not run | 13 |
 | 0:45–0:50 | Flex buffer | Absorbs overruns; otherwise Q&A starts early | 13–14 |
 | 0:50–1:00 | Protected Q&A | Plugin link and QR code | 14 |
 
@@ -84,7 +84,7 @@ Review is report-only. It changes nothing until you approve a separate fix round
    copilot plugin install gh-skills-builder@awesome-copilot
    ```
 
-   If the marketplace isn't registered yet, first run `copilot plugin marketplace add github/awesome-copilot`. In the Copilot app, confirm that `@github-skills-orchestrator` and the five slash commands are available.
+   If the marketplace isn't registered yet, first run `copilot plugin marketplace add github/awesome-copilot`. Use gh-skills-builder 3.0.0 or later; the prompts use its `github-skills-*` skill names. In the Copilot app, confirm that `@github-skills-orchestrator` and the five slash commands are available.
 2. Clone this repository. The prompts refer to its absolute path as `<workshop-repo>`, because a quick chat has no working directory.
 3. Work through the [pre-stage checklist](demo-prestage-checklist.md):
    - dry-run `handoff.sh`;
