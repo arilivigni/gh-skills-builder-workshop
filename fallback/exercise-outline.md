@@ -21,7 +21,7 @@ In 15–20 minutes, a new Tailspin Toys teammate uses the GitHub Copilot app to 
 - **Steps**: three, all graded. Step 3 is the last step and posts the review.
 - **Outline storage**: bootstrap saves this outline verbatim as `.github/exercise-outline.md` in the exercise repository.
 - **Starter content**: the Tailspin Toys app (MIT), imported from `github-samples/tailspin-toys` at `b37109e`. Bootstrap adds exercise files on top of it. It must not modify `.github/copilot-instructions.md` or `.github/skills/quality-checks/SKILL.md`, and `.github/agents/qa.agent.md` must not exist.
-- **Next**: hand off to `bootstrap-github-skills-exercise`.
+- **Next**: hand off to `github-skills-bootstrap`.
 
 ## Welcome block
 

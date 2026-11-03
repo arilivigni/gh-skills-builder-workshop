@@ -26,11 +26,11 @@ The earlier drawn PNGs use Mona Sans Display Bold for titles, Mona Sans Regular 
 
 ## Label mapping
 
-- Orchestration skill: `/orchestrate-github-skills-exercise`
-- Outline: `/create-github-skills-outline`
-- Bootstrap: `/bootstrap-github-skills-exercise`
-- Review: `/review-github-skills-exercise`
-- Publish: `/publish-github-skills-exercise`
+- Orchestration skill: `/github-skills-orchestrate`
+- Outline: `/github-skills-outline`
+- Bootstrap: `/github-skills-bootstrap`
+- Review: `/github-skills-review`
+- Publish: `/github-skills-publish`
 - Agent: `@github-skills-orchestrator`
 
 The illustrated review is the orchestrator's self-review, not an independent reviewer or a tool-permission boundary. A repeated finding after two fix rounds must be escalated.

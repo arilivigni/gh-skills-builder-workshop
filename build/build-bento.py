@@ -398,7 +398,7 @@ def build_slides():
             image("cover-rail", 0, 0, 235, 720, "rail"),
             text("cover-title", 256, 28, 928, 170, esc("Turn any idea into a Hands-on GitHub Exercise"), 66,
                  line=1.08, role="title", fx=enter(0)),
-            text("cover-subtitle", 256, 204, 928, 40, esc("GitHub Copilot app/CLI and the gh-skills-builder-plugin"),
+            text("cover-subtitle", 256, 204, 928, 40, esc("GitHub Copilot app/CLI and the gh-skills-builder plugin"),
                  30, color=ACCENT, line=1.2, role="subtitle", fx=enter(1)),
             shape("cover-divider", "rect", 256, 606, 928, 1, "#5A6560", fx=enter(2, "fade")),
             image("cover-photo", 256, 622, 129, 89, "headshot", fx=enter(2, "fade")),
@@ -484,7 +484,7 @@ def build_slides():
                   ["Choose an exercise title and an eye-catching repository name."], 2),
             *card("outline", "panel-3", "badge-3", 844, 216, 340, 336, "3", "Validation",
                   ["For every graded step: what can a workflow actually check?"], 3),
-            *command("outline", "/create-github-skills-outline"),
+            *command("outline", "/github-skills-outline"),
             *tracker(0),
         ]),
         slide("bootstrap", "Bootstrap", [
@@ -500,7 +500,7 @@ def build_slides():
             text("bootstrap-gets-body", 680, 300, 504, 130,
                  esc("A clear entry point.", "Issue-driven practice.", "Checks and useful feedback."), 24,
                  color=MUTED, line=1.45, role="body", fx=enter(2)),
-            *command("bootstrap", "/bootstrap-github-skills-exercise"),
+            *command("bootstrap", "/github-skills-bootstrap"),
             *tracker(1),
         ], transition="morph"),
         slide("review", "Feedback is a circuit", [
@@ -515,7 +515,7 @@ def build_slides():
                   ["Validation evidence.", "PR copy and release notes.", "Launch checklist and known risks."], 1, 30, 22),
             *card("publish", "card-b", "badge-b", 656, 216, 528, 336, "H", "Pause for authorization",
                   ["Confirm the exact owner/repo.", "Confirm visibility.", "Then create, push, or transfer."], 2, 30, 22),
-            *command("publish", "/publish-github-skills-exercise"),
+            *command("publish", "/github-skills-publish"),
             *tracker(3),
         ], transition="morph"),
         slide("recap", "Recap", [

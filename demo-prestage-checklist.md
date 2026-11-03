@@ -69,8 +69,8 @@ Prepare the **three-step** Copilot customization exercise, not the former five-s
 ## Day before
 
 - [ ] Install/enable the plugin from [gh.io/gh-skills-builder](https://gh.io/gh-skills-builder). CLI: `copilot plugin install gh-skills-builder@awesome-copilot`; if necessary register `copilot plugin marketplace add github/awesome-copilot` first.
-- [ ] Record and rehearse the installed release. Marketplace availability is not the same as unreleased local changes.
-- [ ] Confirm one agent and five skill commands: orchestrate, outline, bootstrap, review, publish. Rehearse actual app UI rather than assuming quick-chat tools or Auto tiers are available.
+- [ ] Record and rehearse the installed release, which must be 3.0.0 or later so the `github-skills-*` skill names in the prompts resolve. Marketplace availability is not the same as unreleased local changes.
+- [ ] Confirm one agent and five skill commands: `/github-skills-orchestrate`, `/github-skills-outline`, `/github-skills-bootstrap`, `/github-skills-review`, `/github-skills-publish`. Rehearse actual app UI rather than assuming quick-chat tools or Auto tiers are available.
 - [ ] Rehearse the install demonstration in at most 60 seconds, or plan to skip it. Attendees can install later; their setup is not a dependency for the presenter demo.
 - [ ] Verify Interactive settings; prefer Auto → Intelligence for the quick chat and Auto → Balance for the project session, where available.
 - [ ] Open the light/dark decks and confirm the QR resolves. Check that the slide 2 agenda matches the run-of-show times, and run `python3 build/sync-notes.py --check` to confirm both decks' speaker notes match the run of show.
