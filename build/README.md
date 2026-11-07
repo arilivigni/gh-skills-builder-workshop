@@ -1,6 +1,6 @@
 # Rebuilding the decks and the website
 
-The committed decks in the repository root are ready to present. Speaker notes are maintained in [`../run-of-show.md`](../run-of-show.md), not in the build script; see [Speaker notes](#speaker-notes). Rebuild the PowerPoint decks only after changing slide text or artwork in `build-workshop-v2.py`. The [Bento deck](#bento-deck) and the [website](#website) are generated from the dark PowerPoint deck and the run of show, and need neither the template nor PowerPoint.
+The committed decks in the repository root are ready to present. Speaker notes are maintained in [`../run-of-show.md`](../run-of-show.md), not in the build script; see [Speaker notes](#speaker-notes). Rebuild the PowerPoint decks only after changing slide text or artwork in `build-workshop-v2.py`. The [Bento deck](#bento-deck) and the [website](#website) are generated from the PowerPoint decks and the run of show, and need neither the template nor PowerPoint.
 
 > [!WARNING]
 > The committed decks include hand edits made after the last build: slide 1 is the title slide from the 2026 GitHub presentation template, and the original title slide is now slide 15, hidden. `build-workshop-v2.py` does not reproduce those edits, so rerunning it overwrites them. After a rebuild, reapply them in PowerPoint, then run `sync-notes.py`.
@@ -33,13 +33,17 @@ The Bento deck has the same notes, so run `python3 build/build-bento.py` after `
 
 ## Bento deck
 
-`build-bento.py` writes three things from `gh-skills-builder-workshop-dark.pptx` and `run-of-show.md`:
+`build-bento.py` writes three things from `gh-skills-builder-workshop-dark.pptx`, `gh-skills-builder-workshop-light.pptx`, and `run-of-show.md`:
 
-- `gh-skills-builder-workshop-dark.bento.html`: the [Bento](https://bento.page) deck, with speaker notes.
-- `site/slides/gh-skills-builder-workshop.bento.html`: a read-only copy for the website, without notes.
-- `site/assets/img/`: the slide images, recompressed as WebP for the web, plus the favicon and the social preview image.
+- `gh-skills-builder-workshop-dark.bento.html`: the [Bento](https://bento.page) deck, with speaker notes. It is always dark.
+- `site/slides/gh-skills-builder-workshop.bento.html`: a read-only copy for the website, without notes, that can also show the light slides.
+- `site/assets/img/`: the slide images, recompressed as WebP for the web, plus the favicon, the social preview image, and the `-light` artwork and texture for the website's light theme.
 
-A `.bento.html` file is the Bento app plus one `<script type="application/bento+json" id="bento-doc">` block that holds the slides as JSON. The script rewrites only that block, so the slide layouts live in `build-bento.py`: changes made in the Bento editor are overwritten by the next run. Images come from the PowerPoint deck, so artwork changes there carry over. The fonts are the Mona Sans files in `site/assets/fonts/`.
+A `.bento.html` file is the Bento app plus one `<script type="application/bento+json" id="bento-doc">` block that holds the slides as JSON. The script rewrites only that block, so the slide layouts live in `build-bento.py`: changes made in the Bento editor are overwritten by the next run. Images come from the PowerPoint decks, so artwork changes there carry over. The fonts are the Mona Sans files in `site/assets/fonts/`.
+
+### Light slides
+
+The light slides are built from the same slide code with the light deck's colors (`PALETTES` in `build-bento.py`) and images. The website copy gets them in a region marked `<!-- ghsb-theme -->…<!-- /ghsb-theme -->`, right after the `bento-doc` block: a `ghsb-light` JSON block and the inlined [`deck-theme.js`](deck-theme.js). Before Bento starts, that script reads the saved choice (`ghsb-theme` in `localStorage`, shared with the website's switch) and, for the light theme, swaps the light slides into `bento-doc`. Changing the theme reloads the deck and returns to the current slide. Slide IDs, layouts, and notes are identical in both themes; only colors and images differ. `deck-theme.js` is inlined as is, so it must not contain `</`, `<!--`, or `<script`; the build stops if it does.
 
 ```bash
 python3 build/build-bento.py                  # update the decks and site images
@@ -60,6 +64,8 @@ python3 build/sync-site.py --check  # exit 1 if the site is out of date
 ```
 
 It uses only the standard library. To show another prompt, add an empty region with a new ID to `site/index.html`, then add the ID to `PROMPTS` in `sync-site.py` with its slide, code-block position, and a phrase it must contain. The script fails if a region has no prompt, a prompt has no region, or a run-of-show block moved, so a reordered prompt is never copied into the wrong place.
+
+Colors in `site/assets/css/site.css` are variables. The dark values are in `:root`; the light values appear twice, once for **System** on a light operating system and once for an explicit **Light** choice, and the tests check that both copies match. An inline script in the page head applies a saved choice before the page draws, so it never flashes the wrong theme. Light artwork is chosen with `<picture>` sources marked `data-theme-media`, which `site.js` updates when the visitor picks a theme.
 
 [`../.github/workflows/pages.yml`](../.github/workflows/pages.yml) runs `test_sync_site.py` and `sync-site.py --check` on pull requests that touch the site, `run-of-show.md`, or `handoff.sh`, and deploys `site/` to GitHub Pages on each push to `main`. It does not rebuild the Bento deck, so run `build-bento.py --check` yourself after changing the PowerPoint deck.
 

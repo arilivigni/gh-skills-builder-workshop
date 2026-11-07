@@ -1,4 +1,5 @@
 (() => {
+  const root = document.documentElement;
   const live = document.getElementById("live");
   const announce = (message) => {
     live.textContent = "";
@@ -70,6 +71,53 @@
       sendKey(button.dataset.deck === "next" ? "ArrowRight" : "ArrowLeft");
     });
   });
+
+  // System, Light, or Dark. The choice is saved under the key the embedded deck reads too.
+  const THEME_KEY = "ghsb-theme";
+  const THEMES = ["system", "light", "dark"];
+  const themeSwitch = document.querySelector(".theme-switch");
+  const savedTheme = () => {
+    try {
+      const value = localStorage.getItem(THEME_KEY);
+      return THEMES.includes(value) ? value : "system";
+    } catch {
+      return "system";
+    }
+  };
+  // Light art and browser colors follow the system by default; an explicit choice overrides it.
+  const applyTheme = (choice) => {
+    if (choice === "system") root.removeAttribute("data-theme");
+    else root.dataset.theme = choice;
+    document.querySelectorAll("[data-theme-media]").forEach((element) => {
+      const theme = element.dataset.themeMedia;
+      element.media = choice === "system" ? `(prefers-color-scheme: ${theme})` : choice === theme ? "all" : "not all";
+    });
+    if (themeSwitch) {
+      const radio = themeSwitch.querySelector(`input[value="${choice}"]`);
+      if (radio) radio.checked = true;
+    }
+  };
+  const tellDeck = () => {
+    if (deck && deck.contentWindow) deck.contentWindow.postMessage({ type: "ghsb-theme" }, "/");
+  };
+  if (themeSwitch) {
+    applyTheme(savedTheme());
+    themeSwitch.hidden = false;
+    themeSwitch.addEventListener("change", (event) => {
+      const choice = event.target.value;
+      try {
+        if (choice === "system") localStorage.removeItem(THEME_KEY);
+        else localStorage.setItem(THEME_KEY, choice);
+      } catch {
+        // Storage can be blocked; the choice still applies to this page view.
+      }
+      applyTheme(choice);
+      tellDeck();
+    });
+    window.addEventListener("storage", (event) => {
+      if (event.key === THEME_KEY || event.key === null) applyTheme(savedTheme());
+    });
+  }
 
   const links = [...document.querySelectorAll(".site-nav a")];
   const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
