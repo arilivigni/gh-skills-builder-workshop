@@ -5419,10 +5419,11 @@
 // System, Light, or Dark for the website deck. build-bento.py inlines this file right after
 // #bento-doc, so it runs before Bento reads the slides. Light swaps in the light slides that
 // build-bento.py stores in #ghsb-light; dark leaves the document alone. The website saves the
-// same choice under the same key, so the page and its embedded deck always agree.
+// same choice under the same key and also posts it here, so the page and its embedded deck agree.
 (() => {
   const KEY = "ghsb-theme";
   const SLIDE_KEY = "ghsb-deck-slide";
+  const HINT = "ghsb-theme:";
   const CHOICES = ["system", "light", "dark"];
   const root = document.documentElement;
   const prefersLight = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
@@ -5435,12 +5436,23 @@
       return "system";
     }
   };
+  // Switching themes reloads the deck. When storage is blocked, window.name carries the choice
+  // across that reload, because it survives reloads in the same tab or frame.
+  const hinted = () => {
+    const name = String(window.name || "");
+    const value = name.startsWith(HINT) ? name.slice(HINT.length) : "";
+    return CHOICES.includes(value) ? value : null;
+  };
+  const hint = (value) => {
+    if (value) window.name = HINT + value;
+    else if (hinted()) window.name = "";
+  };
   const resolve = (choice) => {
     if (choice !== "system") return choice;
     return prefersLight && prefersLight.matches ? "light" : "dark";
   };
 
-  let choice = stored();
+  let choice = hinted() || stored();
   const wanted = resolve(choice);
   let applied = "dark";
   if (wanted === "light") {
@@ -5517,21 +5529,28 @@
   }
 
   const listeners = [];
-  const update = () => {
-    choice = stored();
-    if (resolve(choice) !== wanted) {
-      reload();
-      return;
-    }
-    listeners.forEach((listener) => listener());
+  const notify = () => listeners.forEach((listener) => listener());
+  const follow = (value) => {
+    choice = value;
+    if (resolve(choice) !== wanted) reload();
+    else notify();
+  };
+  // A choice that storage did not keep is hinted, so the reload still shows it.
+  const choose = (value, saved) => {
+    hint(saved ? null : value);
+    follow(value);
   };
   window.addEventListener("storage", (event) => {
-    if (event.key === KEY || event.key === null) update();
+    if (event.key !== KEY && event.key !== null) return;
+    hint(null);
+    follow(stored());
   });
-  if (prefersLight) prefersLight.addEventListener("change", update);
+  if (prefersLight) prefersLight.addEventListener("change", () => follow(choice));
   window.addEventListener("message", (event) => {
     if (event.source !== window.parent || event.origin !== location.origin) return;
-    if (event.data && event.data.type === "ghsb-theme") update();
+    if (!event.data || event.data.type !== "ghsb-theme") return;
+    const value = CHOICES.includes(event.data.choice) ? event.data.choice : stored();
+    choose(value, stored() === value);
   });
 
   // Inside the website the page header has the switch; the full-screen deck gets its own.
@@ -5565,14 +5584,14 @@
       button.type = "button";
       button.textContent = value[0].toUpperCase() + value.slice(1);
       button.addEventListener("click", () => {
+        let saved = false;
         try {
           localStorage.setItem(KEY, value);
+          saved = localStorage.getItem(KEY) === value;
         } catch {
-          // Private modes can block storage; the choice then lasts until the next reload.
+          // Private modes can block storage; the hint keeps the choice for this tab.
         }
-        choice = value;
-        if (resolve(choice) !== wanted) reload();
-        else listeners.forEach((listener) => listener());
+        choose(value, saved);
       });
       group.appendChild(button);
       return button;
@@ -5580,7 +5599,7 @@
     listeners.push(() => {
       buttons.forEach((button, i) => button.setAttribute("aria-pressed", String(CHOICES[i] === choice)));
     });
-    listeners.forEach((listener) => listener());
+    notify();
     document.body.appendChild(group);
 
     // The presenter's Space key advances slides; on a focused button it should press the button.

@@ -85,7 +85,9 @@
     }
   };
   // Light art and browser colors follow the system by default; an explicit choice overrides it.
+  let themeChoice = "system";
   const applyTheme = (choice) => {
+    themeChoice = choice;
     if (choice === "system") root.removeAttribute("data-theme");
     else root.dataset.theme = choice;
     document.querySelectorAll("[data-theme-media]").forEach((element) => {
@@ -97,12 +99,15 @@
       if (radio) radio.checked = true;
     }
   };
+  // The deck gets the choice itself, not just a nudge to reread storage, because storage can be
+  // blocked. It is sent again whenever the lazy deck loads, including after a theme reload.
   const tellDeck = () => {
-    if (deck && deck.contentWindow) deck.contentWindow.postMessage({ type: "ghsb-theme" }, "/");
+    if (deck && deck.contentWindow) deck.contentWindow.postMessage({ type: "ghsb-theme", choice: themeChoice }, "/");
   };
   if (themeSwitch) {
     applyTheme(savedTheme());
     themeSwitch.hidden = false;
+    if (deck) deck.addEventListener("load", tellDeck);
     themeSwitch.addEventListener("change", (event) => {
       const choice = event.target.value;
       try {
