@@ -4,7 +4,7 @@ AI narration with soft instrumental music underneath.
 
 What if your next onboarding guide became something people could actually practise? Turn an idea into a hands-on GitHub exercise, with GitHub Copilot and the gh-skills-builder plugin.
 
-Built for educators, maintainers and teams, this workshop puts you in the architect's seat. Copilot helps draft the content and scaffold the files. You shape the learning experience.
+For educators, maintainers, enterprises, startups, and internal training, this workshop puts you in the architect's seat. Copilot helps draft the content and scaffold the files. You shape the learning experience.
 
 One orchestrator agent and five reusable skills guide the journey: outline, bootstrap, review, publish, and orchestrate the whole loop. Install the toolkit from the Awesome Copilot marketplace.
 

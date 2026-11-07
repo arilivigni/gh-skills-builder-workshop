@@ -1,139 +1,134 @@
 1
-00:00:00,000 --> 00:00:02,960
+00:00:00,000 --> 00:00:03,200
 [Soft instrumental music]
 What if your next onboarding guide
 
 2
-00:00:02,960 --> 00:00:06,720
+00:00:03,200 --> 00:00:06,520
 became something people could actually
 practise?
 
 3
-00:00:06,720 --> 00:00:10,120
+00:00:06,520 --> 00:00:10,040
 Turn an idea into a hands-on GitHub
 exercise
 
 4
-00:00:10,120 --> 00:00:14,280
+00:00:10,040 --> 00:00:14,160
 with GitHub Copilot and the
 gh-skills-builder plugin.
 
 5
-00:00:14,280 --> 00:00:17,400
-Built for educators, maintainers, and
-teams.
+00:00:14,160 --> 00:00:19,960
+For educators, maintainers, enterprises,
+startups, and internal training,
 
 6
-00:00:17,400 --> 00:00:22,320
-This workshop puts you in the architect's
-seat. Copilot helps draft the content and
+00:00:19,960 --> 00:00:22,800
+this workshop puts you in the architect's
+seat.
 
 7
-00:00:22,320 --> 00:00:26,520
-scaffold the files. You shape the learning
-experience.
+00:00:22,800 --> 00:00:26,560
+Copilot helps draft the content and
+scaffold the files.
 
 8
-00:00:26,520 --> 00:00:29,560
-One orchestrator agent and five reusable
-skills
+00:00:26,560 --> 00:00:31,680
+You shape the learning experience. One
+orchestrator agent and five reusable
 
 9
-00:00:29,560 --> 00:00:34,120
-guide the journey, outline, bootstrap,
-review, publish,
+00:00:31,680 --> 00:00:37,000
+skills guide the journey. Outline,
+bootstrap, review, publish,
 
 10
-00:00:34,120 --> 00:00:38,910
+00:00:37,000 --> 00:00:41,970
 and orchestrate the whole loop. Install
 the toolkit from the Awesome Copilot
 
 11
-00:00:38,910 --> 00:00:44,000
-marketplace. Start with the outcome,
-define what learners will practise,
+00:00:41,970 --> 00:00:46,840
+marketplace. Start with the outcome.
+Define what learners will practise,
 
 12
-00:00:44,000 --> 00:00:47,280
+00:00:46,840 --> 00:00:51,760
 what success looks like, and how to check
-it.
+it. Then turn the approved outline
 
 13
-00:00:47,280 --> 00:00:50,360
-Then turn the approved outline into a
-runnable,
+00:00:51,760 --> 00:00:55,720
+into a runnable, issue-driven GitHub
+Skills exercise.
 
 14
-00:00:50,360 --> 00:00:56,080
-issue-driven GitHub Skills exercise. The
-example uses Tailspin Toys to teach
+00:00:55,720 --> 00:01:00,840
+The example uses Tailspin Toys to teach
+three practical Copilot habits.
 
 15
-00:00:56,080 --> 00:01:01,660
-three practical Copilot habits. Clear
-repository instructions, consistent
+00:01:00,840 --> 00:01:04,880
+Clear repository instructions, consistent
+quality reports,
 
 16
-00:01:01,660 --> 00:01:05,160
-quality reports, and a report-only QA
-agent.
+00:01:04,880 --> 00:01:10,440
+and a report-only QA agent. A small
+exercise with a concrete purpose,
 
 17
-00:01:05,160 --> 00:01:10,360
-A small exercise with a concrete purpose.
-Checks examine what learners wrote,
+00:01:10,440 --> 00:01:14,640
+checks examine what learners wrote, not
+just whether a file exists,
 
 18
-00:01:10,360 --> 00:01:15,460
-not just whether a file exists. Review the
-findings, approve a targeted
+00:01:14,640 --> 00:01:19,000
+review the findings, approve a targeted
+fix, and review again.
 
 19
-00:01:15,460 --> 00:01:20,800
-fix, and review again. Useful feedback
-helps learners understand what to improve.
+00:01:19,000 --> 00:01:22,480
+Useful feedback helps learners understand
+what to improve,
 
 20
-00:01:20,800 --> 00:01:25,540
-People stay in control of the decisions.
-Prepare the validation evidence and
+00:01:22,480 --> 00:01:26,850
+people stay in control of the decisions,
+prepare the validation evidence and
 
 21
-00:01:25,540 --> 00:01:31,070
-launch checklist. Then pause. Release
-readiness is not permission to
+00:01:26,850 --> 00:01:31,920
+launch checklist, then pause. Release
+readiness is not permission to publish,
 
 22
-00:01:31,070 --> 00:01:35,400
-publish, and this workshop stops before
-public release.
+00:01:31,920 --> 00:01:36,680
+and this workshop stops before public
+release. Watch the live walkthrough,
 
 23
-00:01:35,400 --> 00:01:40,520
-Watch the live walkthrough, then replay
-the copyable prompts at your own pace.
+00:01:36,680 --> 00:01:41,280
+then replay the copyable prompts at your
+own pace. The website brings the slides,
 
 24
-00:01:40,520 --> 00:01:45,280
-The website brings the slides,
+00:01:41,280 --> 00:01:46,640
 instructions, and resources together.
+Repeatable, observable, inclusive, and
 
 25
-00:01:45,280 --> 00:01:49,880
-Repeatable, observable, inclusive, and
-human-led.
+00:01:46,640 --> 00:01:52,440
+human-led. Explore the workshop, get the
+plugin, and bring your next idea.
 
 26
-00:01:49,880 --> 00:01:54,640
-Explore the workshop, get the plugin, and
-bring your next idea.
-
-27
-00:01:54,640 --> 00:01:57,520
+00:01:52,440 --> 00:01:55,340
 Build a learning experience people can put
 into practice.
 
-28
+27
 00:01:57,600 --> 00:02:00,000
 [Instrumental music fades]
 
