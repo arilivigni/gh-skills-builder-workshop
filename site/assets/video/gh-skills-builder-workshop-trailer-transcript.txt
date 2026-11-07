@@ -6,7 +6,7 @@ What if your next onboarding guide became something people could actually practi
 
 For educators, maintainers, enterprises, startups, and internal training, this workshop puts you in the architect's seat. Copilot helps draft the content and scaffold the files. You shape the learning experience.
 
-One orchestrator agent and five reusable skills guide the journey: outline, bootstrap, review, publish, and orchestrate the whole loop. Install the toolkit from the Awesome Copilot marketplace.
+One orchestrator agent and five reusable skills guide the journey: outline, bootstrap, review, publish, and orchestrate the whole loop. Install the plugin from the awesome-copilot marketplace in the Copilot app or CLI.
 
 Start with the outcome. Define what learners will practise, what success looks like, and how to check it. Then turn the approved outline into a runnable, issue-driven GitHub Skills exercise.
 

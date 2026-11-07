@@ -12,7 +12,8 @@ Existing slide artwork: generated with Google Gemini.
 
 AI NARRATION
 Generated locally with Qwen3-TTS-12Hz-1.7B-VoiceDesign, Q8_0.
-Voice direction: warm, confident Australian English female narration.
+Voice direction: bright, conversational Australian English female narration.
+Pacing: long silent pauses shortened; speech speed and pitch unchanged.
 This is synthetic speech, not a human recording. No specific person's
 voice or likeness was used for cloning.
 Model and codec: Qwen team / Alibaba, Apache-2.0.

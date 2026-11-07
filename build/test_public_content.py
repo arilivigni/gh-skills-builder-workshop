@@ -194,6 +194,8 @@ class TrailerTests(unittest.TestCase):
         self.assertEqual(len(self.tags("summary")), 1)
         inline = " ".join(" ".join(self.parser.text).split())
         transcript = (self.media / f"{self.prefix}-transcript.txt").read_text()
+        self.assertIn("Install the plugin from the awesome-copilot marketplace "
+                      "in the Copilot app or CLI.", transcript)
         for paragraph in transcript.strip().split("\n\n")[2:]:
             self.assertIn(" ".join(paragraph.split()), inline)
         credits = (self.media / "credits.txt").read_text()
@@ -223,6 +225,9 @@ class TrailerTests(unittest.TestCase):
             self.assertTrue(all(len(line) <= 42 for line in text.splitlines()))
             previous_end = seconds(end)
         self.assertIn("gh-skills-builder", vtt)
+        spoken = " ".join(" ".join(text.split()) for _, _, text in cues)
+        self.assertIn("Install the plugin from the awesome-copilot marketplace "
+                      "in the Copilot app or CLI", spoken)
 
     def test_media_size_checksum_and_recorded_encoding(self):
         path = self.media / f"{self.prefix}.mp4"
