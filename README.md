@@ -146,6 +146,18 @@ The deck is generated from the dark PowerPoint deck and the run of show. Changes
 
 The embedded slides are a read-only copy of the Bento deck, without speaker notes. The page's social preview image uses the absolute URL `https://arilivigni.github.io/gh-skills-builder-workshop/`; update `og:image` in `site/index.html` if the site moves.
 
+### Two-minute workshop trailer
+
+The trailer sits immediately below the website hero. It uses the actual Bento slides and website, a script grounded in `run-of-show.md`, locally generated AI narration directed in Australian English, and credited instrumental music. Playback is user-initiated, with English captions and an expandable transcript.
+
+- [Watch the standalone MP4](site/assets/video/gh-skills-builder-workshop-trailer.mp4).
+- Download [SRT captions](site/assets/video/gh-skills-builder-workshop-trailer.srt), [WebVTT captions](site/assets/video/gh-skills-builder-workshop-trailer.vtt), or the [transcript](site/assets/video/gh-skills-builder-workshop-trailer-transcript.txt).
+- Read the [voice and music credits](site/assets/video/credits.txt).
+
+The embedded player, Open video link and Download MP4 link share one same-origin file. These assets deploy with `site/` after the PR is merged and the Pages workflow succeeds; a branch preview is not a live publication. For standalone playback with captions, download the MP4 and matching SRT together.
+
+To replace the trailer, update the MP4, poster, captions, transcript, credits and `media-info.json` together under `site/assets/video/`, plus the inline transcript in `site/index.html`. Keep the video at 1920 × 1080, 30 fps, 120 seconds, H.264/AAC with fast start, and at most 40 MiB. Regenerate the media checksum/metadata from the actual output, not estimates. Keep model weights, source recordings and render intermediates out of this repository. Run the public-content and prompt-sync tests before publishing.
+
 ## Rebuilding the decks
 
 The committed decks are ready to present. Speaker notes come from [`run-of-show.md`](run-of-show.md). After editing it, run:

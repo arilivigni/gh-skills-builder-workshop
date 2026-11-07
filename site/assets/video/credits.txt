@@ -1,0 +1,32 @@
+Turn any idea into a Hands-on GitHub Exercise
+Two-minute workshop trailer
+
+VISUALS AND SCRIPT
+Actual workshop Bento slides and website, with narration grounded in
+run-of-show.md, source revision f0cd541c935773ac02e951448e4004d8a2b1fbe5.
+Website: https://arilivigni.github.io/gh-skills-builder-workshop/
+Plugin: https://gh.io/gh-skills-builder
+Design follows the workshop's GitHub 2026 presentation theme.
+Mona Sans: GitHub, SIL Open Font License 1.1.
+Existing slide artwork: generated with Google Gemini.
+
+AI NARRATION
+Generated locally with Qwen3-TTS-12Hz-1.7B-VoiceDesign, Q8_0.
+Voice direction: warm, confident Australian English female narration.
+This is synthetic speech, not a human recording. No specific person's
+voice or likeness was used for cloning.
+Model and codec: Qwen team / Alibaba, Apache-2.0.
+Original model: https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign
+GGUF conversion: https://huggingface.co/Serveurperso/Qwen3-TTS-GGUF
+Native runtime: https://github.com/ServeurpersoCom/qwentts.cpp (MIT).
+Caption alignment: local Whisper base.en; brand spelling corrected.
+
+MUSIC
+"Life of Riley"
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0
+https://creativecommons.org/licenses/by/4.0/
+Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400054
+Changes: excerpt, level adjustment, speech ducking and fades.
+
+The creator and licensors do not endorse this workshop.
