@@ -1,0 +1,21 @@
+Workshop trailer transcript
+
+AI narration with soft instrumental music underneath.
+
+What if your next onboarding guide became something people could actually practise? Turn an idea into a hands-on GitHub exercise, with GitHub Copilot and the gh-skills-builder plugin.
+
+For educators, maintainers, enterprises, startups, and internal training, this workshop puts you in the architect's seat. Copilot helps draft the content and scaffold the files. You shape the learning experience.
+
+One orchestrator agent and five reusable skills guide the journey: outline, bootstrap, review, publish, and orchestrate the whole loop. Install the plugin from the awesome-copilot marketplace in the Copilot app or CLI.
+
+Start with the outcome. Define what learners will practise, what success looks like, and how to check it. Then turn the approved outline into a runnable, issue-driven GitHub Skills exercise.
+
+The example uses Tailspin Toys to teach three practical Copilot habits: clear repository instructions, consistent quality reports, and a report-only QA agent. A small exercise, with a concrete purpose.
+
+Checks examine what learners wrote, not just whether a file exists. Review the findings, approve a targeted fix, and review again. Useful feedback helps learners understand what to improve.
+
+People stay in control of the decisions. Prepare the validation evidence and launch checklist, then pause. Release readiness is not permission to publish, and this workshop stops before public release.
+
+Watch the live walkthrough, then replay the copyable prompts at your own pace. The website brings the slides, instructions and resources together. Repeatable, observable, inclusive, and human-led.
+
+Explore the workshop, get the plugin, and bring your next idea. Build a learning experience people can put into practice.

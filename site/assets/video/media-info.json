@@ -1,0 +1,13 @@
+{
+  "sha256": "1e46ba1543251adde967f489bf4c6da01791878cea685097430f3d88c75fa105",
+  "bytes": 21726159,
+  "duration_seconds": 120.0,
+  "width": 1920,
+  "height": 1080,
+  "frame_rate": "30/1",
+  "video_frames": 3600,
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "pixel_format": "yuv420p",
+  "source_revision": "f0cd541c935773ac02e951448e4004d8a2b1fbe5"
+}

@@ -1,0 +1,139 @@
+1
+00:00:00,000 --> 00:00:02,560
+[Soft instrumental music]
+What if your next onboarding guide
+
+2
+00:00:02,560 --> 00:00:05,840
+became something people could actually
+practise?
+
+3
+00:00:05,840 --> 00:00:08,840
+Turn an idea into a hands-on GitHub
+exercise
+
+4
+00:00:08,840 --> 00:00:11,920
+with GitHub Copilot and the
+gh-skills-builder plugin.
+
+5
+00:00:11,920 --> 00:00:16,320
+For educators, maintainers, enterprises,
+startups, and internal training,
+
+6
+00:00:16,320 --> 00:00:20,790
+this workshop puts you in the architect's
+seat. Copilot helps draft the content and
+
+7
+00:00:20,790 --> 00:00:24,640
+scaffold the files. You shape the learning
+experience.
+
+8
+00:00:24,640 --> 00:00:29,160
+One orchestrator agent and five reusable
+skills guide the journey.
+
+9
+00:00:29,160 --> 00:00:34,880
+Outline, bootstrap, review, publish, and
+orchestrate the whole loop.
+
+10
+00:00:34,880 --> 00:00:37,760
+Install the plugin from the
+awesome-copilot marketplace
+
+11
+00:00:37,760 --> 00:00:42,160
+in the Copilot app or CLI. Start with the
+outcome.
+
+12
+00:00:42,160 --> 00:00:47,560
+Define what learners will practise, what
+success looks like, and how to check it.
+
+13
+00:00:47,560 --> 00:00:51,780
+Then turn the approved outline into a
+runnable, issue-driven GitHub
+
+14
+00:00:51,780 --> 00:00:54,960
+Skills exercise. The example uses Tailspin
+Toys
+
+15
+00:00:54,960 --> 00:01:00,620
+to teach three practical Copilot habits.
+Clear repository instructions,
+
+16
+00:01:00,620 --> 00:01:05,180
+consistent quality reports, and a
+report-only QA agent.
+
+17
+00:01:06,280 --> 00:01:11,020
+A small exercise with a concrete purpose,
+checks examine what learners wrote,
+
+18
+00:01:11,020 --> 00:01:16,800
+not just whether a file exists. Review the
+findings, approve a targeted fix,
+
+19
+00:01:16,800 --> 00:01:21,160
+and review again. Useful feedback helps
+learners understand
+
+20
+00:01:21,160 --> 00:01:25,800
+what to improve. People stay in control of
+the decisions.
+
+21
+00:01:25,800 --> 00:01:29,780
+Prepare the validation evidence and launch
+checklist, then pause.
+
+22
+00:01:29,780 --> 00:01:32,440
+Release readiness is not permission to
+publish,
+
+23
+00:01:32,440 --> 00:01:37,480
+and this workshop stops before public
+release. Watch the live walkthrough,
+
+24
+00:01:37,480 --> 00:01:42,160
+then replay the copyable prompts at your
+own pace. The website brings the slides,
+
+25
+00:01:42,160 --> 00:01:47,210
+instructions and resources together,
+repeatable, observable, inclusive, and
+
+26
+00:01:47,210 --> 00:01:52,720
+human-led. Explore the workshop, get the
+plugin, and bring your next idea.
+
+27
+00:01:53,920 --> 00:01:56,710
+Build a learning experience people can put
+into practice.
+
+28
+00:01:57,600 --> 00:02:00,000
+[Instrumental music fades]
+

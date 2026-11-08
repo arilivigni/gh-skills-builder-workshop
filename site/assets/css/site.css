@@ -467,6 +467,35 @@ main:focus {
 .subhead {
   margin: 2.5rem 0 1rem;
 }
+.trailer-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--code-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.trailer-links {
+  margin-top: 1.5rem;
+}
+.trailer-transcript {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.trailer-transcript summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.trailer-transcript div {
+  max-width: 48rem;
+  margin-top: 1rem;
+}
+.trailer-transcript p + p {
+  margin-top: 1rem;
+}
 .callout {
   margin: 2rem 0;
   font-size: clamp(1.1rem, 2vw, 1.35rem);
