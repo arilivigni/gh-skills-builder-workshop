@@ -9,10 +9,30 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" data-theme-media="light">
   <script>
     // Apply a saved System / Light / Dark choice before the first paint. site.js does the rest.
-    try {
-      var savedTheme = localStorage.getItem("ghsb-theme");
-      if (savedTheme === "light" || savedTheme === "dark") document.documentElement.setAttribute("data-theme", savedTheme);
-    } catch (error) {}
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("ghsb-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          var root = document.documentElement;
+          root.setAttribute("data-theme", savedTheme);
+          // Pin theme artwork and browser colors as the parser adds them, before any image is chosen,
+          // so nothing loads or draws in the system theme first.
+          var pinTheme = function (node) {
+            if (node.nodeType !== 1) return;
+            var themed = node.matches("[data-theme-media]") ? [node] : node.querySelectorAll("[data-theme-media]");
+            Array.prototype.forEach.call(themed, function (element) {
+              element.media = element.getAttribute("data-theme-media") === savedTheme ? "all" : "not all";
+            });
+          };
+          pinTheme(root);
+          var themeObserver = new MutationObserver(function (records) {
+            records.forEach(function (record) { Array.prototype.forEach.call(record.addedNodes, pinTheme); });
+          });
+          themeObserver.observe(root, { childList: true, subtree: true });
+          document.addEventListener("DOMContentLoaded", function () { themeObserver.disconnect(); });
+        }
+      } catch (error) {}
+    })();
   </script>
   <meta property="og:type" content="website">
   <meta property="og:title" content="Turn any idea into a Hands-on GitHub Exercise">

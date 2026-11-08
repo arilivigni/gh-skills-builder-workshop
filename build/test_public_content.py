@@ -338,6 +338,13 @@ class ThemeTests(unittest.TestCase):
         self.assertIn(self.KEY, (self.site / "assets" / "js" / "site.js").read_text(encoding="utf-8"))
         self.assertIn(self.KEY, (ROOT / "build" / "deck-theme.js").read_text(encoding="utf-8"))
 
+    def test_head_pins_saved_theme_artwork_before_site_js(self):
+        head = self.html[:self.html.index("</head>")]
+        script = head[head.index("<script>"):head.index("</script>")]
+        self.assertIn("[data-theme-media]", script)
+        self.assertIn("MutationObserver", script)
+        self.assertLess(head.index("data-theme-media"), head.index("<script>"), "theme-color tags must precede the head script")
+
     def test_only_the_website_deck_carries_the_light_slides(self):
         site_deck = (self.site / DECK).read_text(encoding="utf-8")
         self.assertEqual(site_deck.count('id="ghsb-light"'), 1)
