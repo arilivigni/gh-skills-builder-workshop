@@ -761,6 +761,17 @@ def apply_theme(page, overlay):
     return page[:end] + "\n" + theme_region(overlay) + page[end:]
 
 
+def themed_page(on_disk, rendered, overlay):
+    """The website deck to write, or None when the file on disk is already current.
+
+    rendered is render()'s result (None when the slides are unchanged). It is compared with the
+    file on disk, not with itself, because a shell taken from a saved website deck already
+    carries the theme region.
+    """
+    updated = apply_theme(on_disk if rendered is None else rendered, overlay)
+    return None if updated == on_disk else updated
+
+
 # --- Shell splice ----------------------------------------------------------
 
 
@@ -808,10 +819,11 @@ def render(path, shell, doc, reshell=False):
 
 
 def load_shell(refresh, shell_path):
+    """The Bento app to splice into, without a theme region, so the presenter deck never gets one."""
     if shell_path:
-        return shell_path.read_text(encoding="utf-8")
+        return THEME_REGION.sub("", shell_path.read_text(encoding="utf-8"))
     if DECK.exists() and not refresh:
-        return DECK.read_text(encoding="utf-8")
+        return THEME_REGION.sub("", DECK.read_text(encoding="utf-8"))
     print(f"Downloading the Bento app from {SHELL_URL}")
     with urllib.request.urlopen(SHELL_URL, timeout=60) as response:
         return response.read().decode("utf-8")
@@ -845,9 +857,8 @@ def main():
                 continue
             page = render(path, shell, deck_doc, reshell=bool(args.refresh_shell or args.shell))
             if themed:
-                current = path.read_text(encoding="utf-8") if page is None else page
-                updated = apply_theme(current, overlay)
-                page = None if updated == current else updated
+                on_disk = path.read_text(encoding="utf-8") if path.exists() else None
+                page = themed_page(on_disk, page, overlay)
             if page is None:
                 print(f"{rel}: up to date")
             else:

@@ -297,6 +297,43 @@ class RenderTests(unittest.TestCase):
         self.assertTrue(page.startswith("<p>v2</p>"))
         self.assertEqual(bento.read_doc(page), before)
 
+    OVERLAY = {"theme": {}, "slides": [], "assets": {}}
+
+    def write_themed(self, app, doc):
+        page = bento.themed_page(None, bento.render(self.path, self.SHELL.format(app=app), doc), self.OVERLAY)
+        self.path.write_text(page, encoding="utf-8")
+        return page
+
+    def test_themed_page_keeps_new_slides_from_a_shell_that_already_has_the_region(self):
+        # --shell pointing at the saved website deck: its region is already current.
+        saved = self.write_themed("v1", self.doc_with("black"))
+        rendered = bento.render(self.path, saved, self.doc_with("white"), reshell=True)
+        self.assertEqual(bento.apply_theme(rendered, self.OVERLAY), rendered)
+        page = bento.themed_page(saved, rendered, self.OVERLAY)
+        self.assertIsNotNone(page)
+        self.assertEqual(bento.read_doc(page)["assets"], self.doc_with("white")["assets"])
+        self.assertEqual(bento.read_theme_region(page), bento.theme_region(self.OVERLAY))
+
+    def test_themed_page_keeps_a_new_app_from_a_shell_that_already_has_the_region(self):
+        saved = self.write_themed("v1", self.doc_with("black"))
+        shell = bento.apply_theme(self.SHELL.format(app="v2"), self.OVERLAY)
+        page = bento.themed_page(saved, bento.render(self.path, shell, self.doc_with("black"), reshell=True), self.OVERLAY)
+        self.assertTrue(page.startswith("<p>v2</p>"))
+        self.assertEqual(bento.read_doc(page), bento.read_doc(saved))
+
+    def test_themed_page_is_none_only_when_the_file_is_current(self):
+        saved = self.write_themed("v1", self.doc_with("black"))
+        self.assertIsNone(bento.themed_page(saved, None, self.OVERLAY))
+        same = bento.render(self.path, saved, self.doc_with("black"), reshell=True)
+        self.assertIsNone(bento.themed_page(saved, same, self.OVERLAY))
+        plain = self.SHELL.format(app="v1")
+        self.assertEqual(bento.read_theme_region(bento.themed_page(plain, None, self.OVERLAY)), bento.theme_region(self.OVERLAY))
+
+    def test_a_shell_taken_from_the_website_deck_loses_its_theme_region(self):
+        plain = self.SHELL.format(app="v1")
+        self.path.write_text(bento.apply_theme(plain, self.OVERLAY), encoding="utf-8")
+        self.assertEqual(bento.load_shell(False, self.path), plain)
+
 
 if __name__ == "__main__":
     unittest.main()
