@@ -134,7 +134,7 @@ As a result, the exercise's Step 0 opens only its own instructions issue.
 2. Press <kbd>S</kbd> for the speaker view with notes, <kbd>F</kbd> to toggle full screen, and <kbd>Esc</kbd> to stop.
 3. Advance with the arrow keys, a clicker, or a swipe. Clicking a slide does not advance it, and the on-screen arrows are hidden so they don't cover the slide.
 
-The deck is generated from the dark PowerPoint deck and the run of show. Changes made in the Bento editor are overwritten by the next build, so make them in `build/build-bento.py` instead.
+The deck is generated from the dark PowerPoint deck and the run of show. Changes made in the Bento editor are overwritten by the next build, so make them in `build/build-bento.py` instead. This presenter deck is always dark; the website's copy, below, can also show the light slides.
 
 ## Workshop website
 
@@ -145,6 +145,10 @@ The deck is generated from the dark PowerPoint deck and the run of show. Changes
 - **Keep it in sync:** the prompts and `site/downloads/handoff.sh` are copied from `run-of-show.md` and `handoff.sh` by `python3 build/sync-site.py`. The workflow fails if you forget.
 
 The embedded slides are a read-only copy of the Bento deck, without speaker notes. The page's social preview image uses the absolute URL `https://arilivigni.github.io/gh-skills-builder-workshop/`; update `og:image` in `site/index.html` if the site moves.
+
+### Light and dark themes
+
+The header has a **System / Light / Dark** switch. **System** follows the visitor's operating system setting and is the default. The choice is saved in the browser, and the page, its artwork, and the embedded slides change together. Opening the slides in their own tab gives them their own switch at the top right, which appears when you move the pointer. The light slides use the colors and artwork of the light PowerPoint deck, and changing the theme keeps the current slide.
 
 ### Two-minute workshop trailer
 

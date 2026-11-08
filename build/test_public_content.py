@@ -265,5 +265,91 @@ class TrailerTests(unittest.TestCase):
         self.assertLess(atoms.index(b"moov"), atoms.index(b"mdat"))
 
 
+class TagCollector(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.tags = []
+
+    def handle_starttag(self, tag, attrs):
+        self.tags.append((tag, dict(attrs)))
+
+
+class ThemeTests(unittest.TestCase):
+    KEY = '"ghsb-theme"'
+
+    def setUp(self):
+        self.site = ROOT / "site"
+        self.css = (self.site / "assets" / "css" / "site.css").read_text(encoding="utf-8")
+        self.html = (self.site / "index.html").read_text(encoding="utf-8")
+        parser = TagCollector()
+        parser.feed(self.html)
+        self.tags = parser.tags
+
+    @staticmethod
+    def declarations(body):
+        return [" ".join(line.split()) for line in body.strip().splitlines() if line.strip()]
+
+    def block(self, pattern):
+        match = re.search(pattern, self.css, re.S)
+        self.assertIsNotNone(match, pattern)
+        return self.declarations(match.group(1))
+
+    def test_system_and_explicit_light_blocks_match(self):
+        system = self.block(r'@media \(prefers-color-scheme: light\) \{\s*:root:not\(\[data-theme="dark"\]\) \{(.*?)\}\s*\}')
+        explicit = self.block(r'\n:root\[data-theme="light"\] \{(.*?)\}')
+        self.assertTrue(system)
+        self.assertEqual(system, explicit)
+
+    def test_light_theme_only_overrides_variables_the_dark_theme_defines(self):
+        dark = {line.split(":")[0] for line in self.block(r"\n:root \{(.*?)\}")}
+        light = {line.split(":")[0] for line in self.block(r'\n:root\[data-theme="light"\] \{(.*?)\}')}
+        self.assertLessEqual(light, dark)
+
+    def test_only_the_theme_blocks_hold_raw_colors(self):
+        rules = self.css[self.css.index('\n:root[data-theme="light"]'):]
+        rules = rules[rules.index("}") + 1:]
+        self.assertEqual(re.findall(r"#[0-9a-fA-F]{3,8}\b|rgba?\(\s*\d", rules), [])
+
+    def test_switch_offers_system_light_and_dark(self):
+        (switch,) = [attrs for tag, attrs in self.tags if tag == "fieldset" and "theme-switch" in attrs.get("class", "")]
+        self.assertIn("hidden", switch)
+        radios = [attrs for tag, attrs in self.tags if tag == "input" and attrs.get("name") == "theme"]
+        self.assertEqual([r["value"] for r in radios], ["system", "light", "dark"])
+        self.assertIn("checked", radios[0])
+        self.assertIn('<legend class="sr-only">Color theme</legend>', self.html)
+
+    def test_light_artwork_and_browser_colors_follow_the_theme(self):
+        themed = [attrs for tag, attrs in self.tags if "data-theme-media" in attrs]
+        sources = [attrs for tag, attrs in self.tags if tag == "source" and "srcset" in attrs]
+        self.assertEqual(len(sources), 3)
+        for attrs in themed:
+            self.assertEqual(attrs["media"], f"(prefers-color-scheme: {attrs['data-theme-media']})")
+        for attrs in sources:
+            self.assertEqual(attrs["data-theme-media"], "light")
+            self.assertTrue(attrs["srcset"].endswith("-light.webp"))
+            self.assertTrue((self.site / attrs["srcset"]).is_file(), attrs["srcset"])
+        metas = {attrs["data-theme-media"]: attrs["content"] for tag, attrs in self.tags if tag == "meta" and "data-theme-media" in attrs}
+        self.assertEqual(metas, {"dark": "#101411", "light": "#ffffff"})
+        self.assertTrue((self.site / "assets" / "img" / "texture-light.webp").is_file())
+
+    def test_page_and_decks_share_one_storage_key(self):
+        head = self.html[:self.html.index("</head>")]
+        self.assertIn(self.KEY, head)
+        self.assertIn(self.KEY, (self.site / "assets" / "js" / "site.js").read_text(encoding="utf-8"))
+        self.assertIn(self.KEY, (ROOT / "build" / "deck-theme.js").read_text(encoding="utf-8"))
+
+    def test_head_pins_saved_theme_artwork_before_site_js(self):
+        head = self.html[:self.html.index("</head>")]
+        script = head[head.index("<script>"):head.index("</script>")]
+        self.assertIn("[data-theme-media]", script)
+        self.assertIn("MutationObserver", script)
+        self.assertLess(head.index("data-theme-media"), head.index("<script>"), "theme-color tags must precede the head script")
+
+    def test_only_the_website_deck_carries_the_light_slides(self):
+        site_deck = (self.site / DECK).read_text(encoding="utf-8")
+        self.assertEqual(site_deck.count('id="ghsb-light"'), 1)
+        self.assertNotIn("ghsb-theme", (ROOT / "gh-skills-builder-workshop-dark.bento.html").read_text(encoding="utf-8"))
+
+
 if __name__ == "__main__":
     unittest.main()
