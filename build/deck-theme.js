@@ -4,8 +4,7 @@
 // same choice under the same key and also posts it here, so the page and its embedded deck agree.
 (() => {
   const KEY = "ghsb-theme";
-  const SLIDE_KEY = "ghsb-deck-slide";
-  const HINT = "ghsb-theme:";
+  const CARRY = "ghsb:";
   const CHOICES = ["system", "light", "dark"];
   const root = document.documentElement;
   const prefersLight = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
@@ -18,17 +17,29 @@
       return "system";
     }
   };
-  // Switching themes reloads the deck. When storage is blocked, window.name carries the choice
-  // across that reload, because it survives reloads in the same tab or frame.
-  const hinted = () => {
+  // Switching themes reloads the deck. window.name survives reloads in the same tab or frame even
+  // when storage is blocked, so it carries a choice storage could not save and the slide to
+  // return to.
+  const carried = () => {
     const name = String(window.name || "");
-    const value = name.startsWith(HINT) ? name.slice(HINT.length) : "";
-    return CHOICES.includes(value) ? value : null;
+    if (!name.startsWith(CARRY)) return {};
+    try {
+      const value = JSON.parse(name.slice(CARRY.length));
+      return value && typeof value === "object" ? value : {};
+    } catch {
+      return {};
+    }
   };
-  const hint = (value) => {
-    if (value) window.name = HINT + value;
-    else if (hinted()) window.name = "";
+  const carry = (changes) => {
+    const next = { ...carried(), ...changes };
+    Object.keys(next).forEach((key) => {
+      if (!next[key]) delete next[key];
+    });
+    if (Object.keys(next).length) window.name = CARRY + JSON.stringify(next);
+    else if (String(window.name || "").startsWith(CARRY)) window.name = "";
   };
+  const hinted = () => (CHOICES.includes(carried().theme) ? carried().theme : null);
+  const hint = (value) => carry({ theme: value });
   const resolve = (choice) => {
     if (choice !== "system") return choice;
     return prefersLight && prefersLight.matches ? "light" : "dark";
@@ -59,8 +70,10 @@
   root.dataset.ghsbTheme = applied;
 
   // Bento always opens the player on the first slide, so a theme reload notes where you were.
+  // Bento renders the slides before it is ready, with the first one current, so only a ready
+  // player gives the real position.
   const slideIndex = () => {
-    const sections = document.querySelectorAll(".reveal > .slides > section");
+    const sections = document.querySelectorAll(".reveal.ready > .slides > section");
     for (let i = 0; i < sections.length; i += 1) {
       if (sections[i].classList.contains("present")) return i;
     }
@@ -73,30 +86,23 @@
       return [];
     }
   })();
+  let resume = carried().slide || null;
   const reload = () => {
-    const index = slideIndex();
-    try {
-      if (index > 0 && slideIds[index]) sessionStorage.setItem(SLIDE_KEY, slideIds[index]);
-    } catch {
-      // Without session storage the deck restarts at the first slide.
-    }
+    // A slide still waiting to be restored is kept, and so is the position before Bento is ready.
+    const index = resume ? -1 : slideIndex();
+    if (index >= 0) carry({ slide: index > 0 ? slideIds[index] : null });
     location.reload();
   };
 
-  let resume = null;
-  try {
-    resume = sessionStorage.getItem(SLIDE_KEY);
-    sessionStorage.removeItem(SLIDE_KEY);
-  } catch {
-    resume = null;
-  }
   if (resume) {
-    // Bento jumps to a slide when an element linked to that slide's id is clicked.
+    // Bento jumps to a slide when an element linked to that slide's id is clicked. The slide stays
+    // carried until then, so a reload while Bento is still starting does not lose it.
     const started = Date.now();
     const jump = () => {
       const slides = document.querySelector(".reveal.ready > .slides");
       if (!slides) {
         if (Date.now() - started < 10000) setTimeout(jump, 50);
+        else done();
         return;
       }
       const link = document.createElement("span");
@@ -106,6 +112,11 @@
       slides.appendChild(link);
       link.click();
       link.remove();
+      done();
+    };
+    const done = () => {
+      resume = null;
+      carry({ slide: null });
     };
     jump();
   }
