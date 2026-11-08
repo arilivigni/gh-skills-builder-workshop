@@ -172,11 +172,13 @@
     group.setAttribute("role", "group");
     group.setAttribute("aria-label", "Color theme");
     group.setAttribute("data-bento-transient", "");
+    let woke = false;
     const buttons = CHOICES.map((value) => {
       const button = document.createElement("button");
       button.type = "button";
       button.textContent = value[0].toUpperCase() + value.slice(1);
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (event) => {
+        if (event.detail && woke) return;
         let saved = false;
         try {
           localStorage.setItem(KEY, value);
@@ -200,14 +202,21 @@
       if (group.contains(event.target) && (event.key === " " || event.key === "Enter")) event.stopPropagation();
     }, true);
 
-    // Out of the way while presenting: shown briefly on load, then whenever the pointer moves.
+    // Out of the way while presenting: shown briefly on load, then whenever the pointer moves or
+    // presses. Touch screens only send pointermove while swiping, which changes slides, so a tap
+    // must also bring it back. A press that starts while it is hidden only shows it: browsers aim
+    // a tap's click after it is shown, so `woke` stops that click from picking a theme unseen.
     let timer = 0;
     const show = () => {
       group.classList.add("is-shown");
       clearTimeout(timer);
       timer = setTimeout(() => group.classList.remove("is-shown"), 2500);
     };
-    document.addEventListener("pointermove", show, { passive: true });
+    document.addEventListener("pointermove", show, { capture: true, passive: true });
+    document.addEventListener("pointerdown", () => {
+      woke = getComputedStyle(group).pointerEvents === "none";
+      show();
+    }, { capture: true, passive: true });
     show();
   };
   if (document.body) build();
